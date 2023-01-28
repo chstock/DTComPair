@@ -6,7 +6,7 @@
 dlr.regtest <- function(tab,alpha) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   if (missing(alpha)) alpha <- 0.05
   acc <- acc.paired(tab)

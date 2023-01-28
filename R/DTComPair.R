@@ -81,7 +81,7 @@ read.tab.1test <-  function(a, b, c, d, testname, ...) {
 acc.1test <-  function(tab, alpha, testname, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.1test") stop("Table must be of class 'tab.1test'")
+  if (!(inherits(x=tab, what="tab.1test", which=F))) stop("Table must be of class 'tab.1test'")
   if (missing(testname)) testname <- tab$testname
   tab <- tab[[1]]
   if (missing(alpha)) alpha <- 0.05
