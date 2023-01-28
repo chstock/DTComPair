@@ -285,7 +285,7 @@ read.tab.paired <-  function(d.a, d.b, d.c, d.d,
 generate.paired <- function(tab, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   testnames <- tab$testnames
   # generate dataframe
@@ -308,7 +308,7 @@ generate.paired <- function(tab, ...) {
 acc.paired <-  function(tab, alpha, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") stop("Table must be of class 'tab.paired'")
+  if (!(inherits(x=tab, what="tab.paired", which=F))) stop("Table must be of class 'tab.paired'")
   if (missing(alpha)) alpha <- 0.05
   # tables for each test
   test1 <- read.tab.1test(tab$diseased[3,1], tab$non.diseased[3,1],
@@ -359,7 +359,7 @@ represent.long <- function(d, y1, y2) {
 sesp.mcnemar <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   # accuracy
   acc <- acc.paired(tab)
@@ -395,7 +395,7 @@ sesp.mcnemar <- function(tab) {
 sesp.exactbinom <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   # accuracy
   acc <- acc.paired(tab)
@@ -433,7 +433,7 @@ sesp.exactbinom <- function(tab) {
 pv.gs <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   # accurac
   acc <- acc.paired(tab)
@@ -505,7 +505,7 @@ pv.gs <- function(tab) {
 pv.wgs <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   acc <- acc.paired(tab)
   ## ppv
@@ -554,7 +554,7 @@ pv.wgs <- function(tab) {
 pv.rpv <- function(tab, alpha) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   if (missing(alpha)) alpha <- 0.05
   # pre-processing 
