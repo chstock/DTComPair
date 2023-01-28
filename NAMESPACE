@@ -5,5 +5,8 @@ S3method(print, acc.paired)
 S3method(print, tab.1test)
 S3method(print, tab.paired)
 
+importFrom("stats", "as.formula", "binomial", "coef", "formula",
+           "model.matrix", "pchisq", "pnorm", "qnorm", "terms")
+
 import(gee)
 import(PropCIs)
