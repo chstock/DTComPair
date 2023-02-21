@@ -16,3 +16,4 @@ Imports: gee
 Depends: 
     R (>= 3.5.0),
     PropCIs
+RoxygenNote: 7.2.3
