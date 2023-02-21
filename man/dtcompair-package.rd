@@ -12,9 +12,9 @@ This package contains functions to compare the accuracy of two binary diagnostic
 \tabular{ll}{
 Package: \tab DTComPair\cr
 Type: \tab Package\cr
-Version: \tab 1.0.3\cr
-Date: \tab 2014-02-15\cr
-License: \tab GNU >=2\cr
+Version: \tab 1.1.0\cr
+Date: \tab 2023-02-21\cr
+License: \tab GPL (>= 3)\cr
 }
 
 The accuracy measures that can be compared in the present version are sensitivity, specificity, positive and negative predictive values, and positive and negative diagnostic likelihood ratios.  
@@ -33,7 +33,7 @@ For a general introduction into the evaluation of diagnostic tests see e.g. Pepe
 \author{
 Christian Stock, Thomas Hielscher
 
-Maintainer: Christian Stock <stock@imbi.uni-heidelberg.de>
+Maintainer: Christian Stock <christian.stock@boehringer-ingelheim.com>
 }
 
 \references{
