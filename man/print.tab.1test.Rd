@@ -12,7 +12,7 @@
   \item{\dots}{Additional arguments (usually not required).
 }
 }
-
+\value{Creates a list object that is subsequently printed.}
 \seealso{
 \code{\link{tab.1test}},
 \code{\link{acc.1test}},
