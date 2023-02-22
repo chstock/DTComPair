@@ -5,7 +5,7 @@
 \title{Comparison of Binary Diagnostic Tests in a Paired Study Design}
 
 \description{
-This package contains functions to compare the accuracy of two binary diagnostic tests in a \dQuote{paired} study design, i.e. when each test is applied to each subject in the study. 
+Comparison of the accuracy of two binary diagnostic tests in a \dQuote{paired} study design, i.e. when each test is applied to each subject in the study. 
 }
 
 \details{
