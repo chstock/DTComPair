@@ -1,15 +1,19 @@
-citHeader("To cite package ''DTComPair'' in publications use:")
-
-year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
-vers <- paste("R package version", meta$Version)
-
-citEntry(entry="Manual",
-         title = "DTComPair: comparison of binary diagnostic tests in a paired study design",
-         author = personList(as.person("Christian Stock"),
-         as.person("Thomas Hielscher")),
-         year = year,
-         note = vers,
-         url = "https://CRAN.R-project.org/package=DTComPair",
-         textVersion =
-           paste("Christian Stock, Thomas Hielscher (",year,"). DTComPair: comparison of binary diagnostic tests in a paired study design. ", vers, ".", " URL: http://CRAN.R-project.org/package=DTComPair", sep="")
+bibentry(bibtype = "Misc",
+  title = "{DTComPair}: comparison of binary diagnostic tests in a paired study design",
+  author = c(person(given = "Christian", family = "Stock",
+                    email = "christian.stock@boehringer-ingelheim.com"),
+             person(given = "Thomas", family = "Hielscher") ),
+  year = "2023",
+  note = "{R} package, version 1.1.0. {URL}: \url{https://CRAN.R-project.org/package=DTComPair}.",
+  header = "To cite DTComPair in publications use:"
+  textVersion = paste(
+    "Stock C, Hielscher T (2023).",
+    "DTComPair: comparison of binary diagnostic tests in a paired study design.",
+    "R package, version 1.1.0.",
+    "URL: https://CRAN.R-project.org/package=DTComPair."
+  ),
+  encoding = "UTF-8"
 )
+
+
+
