@@ -23,11 +23,11 @@ It is required that results from a binary gold-standard test are also available.
 
 Methods for comparison of sensitivity and specificity: McNemar test (McNemar, 1947) and exact binomial test. Further, several methods to compute confidence intervals for differences in sensitivity and specificity are implemented.
 
-Methods for comparison of positive and negative predictive values: generalized score statistic (Leisenring et al., 2000), weighted generalized score statistic (Kosinski, 2013) and comparison of relative predictive values (Moskowitz and Pepe, 2006).
+Methods for comparison of positive and negative predictive values: generalized score statistic (Leisenring, Alonzo and Pepe, 2000), weighted generalized score statistic (Kosinski, 2013) and comparison of relative predictive values (Moskowitz and Pepe, 2006).
 
 Methods for comparison of positive and negative diagnostic likelihood ratios: a regression model approach (Gu and Pepe, 2009).
 
-For a general introduction into the evaluation of diagnostic tests see e.g. Pepe (2003) or Zhou et al. (2011).
+For a general introduction into the evaluation of diagnostic tests see e.g. Pepe (2003), Zhou, Obuchowski and McClish (2011).
 }
 
 \author{
@@ -37,19 +37,20 @@ Maintainer: Christian Stock <christian.stock@boehringer-ingelheim.com>
 }
 
 \references{
-Gu, W. and Pepe, M. S. (2009). Estimating the capacity for improvement in risk prediction with a marker. \emph{Biostatistics}, 10(1):172-86.
+Gu and Pepe (2009), "Estimating the capacity for improvement in risk prediction with a marker", <doi:10.1093/biostatistics/kxn025>. 
 
-Kosinski, A.S. (2013). A weighted generalized score statistic for comparison of predictive values of diagnostic tests. \emph{Stat Med}, 32(6):964-77.
+Kosinski (2013), "A weighted generalized score statistic for comparison of predictive values of diagnostic tests", <doi:10.1002/sim.5587>.
 
-Leisenring, W., Alonzo, T., and Pepe, M.S. (2000). Comparisons of predictive values of binary medical diagnostic tests for paired designs. \emph{Biometrics}, 56(2):345-51.
+Leisenring, Alonzo and Pepe (2000), "Comparisons of predictive values of binary medical diagnostic tests for paired designs", <doi:10.1111/j.0006-341X.2000.00345.x>.
 
-McNemar, Q. (1947). Note on the sampling error of the difference between correlated proportions or percentages. \emph{Psychometrika}, 12(2):153-7.
+McNemar (1947), "Note on the sampling error of the difference between correlated proportions or percentages",  <doi:10.1007/BF02295996>.
 
-Moskowitz, C.S., and Pepe, M.S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. \emph{Clin Trials}, 3(3):272-9.
+Moskowitz and Pepe (2006), "Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs", <doi:10.1191/1740774506cn147oa>.
 
-Pepe, M. (2003). The statistical evaluation of medical tests for classifcation and prediction. Oxford Statistical Science Series. Oxford University Press, 1st edition.
+Pepe (2003, ISBN:978-0198509844), "The statistical evaluation of medical tests for classifcation and prediction".
 
-Zhou, X., Obuchowski, N., and McClish, D. (2011). Statistical Methods in Diagnostic Medicine. Wiley Series in Probability and Statistics. John Wiley & Sons, Hoboken, New Jersey, 2nd edition.
+Zhou, Obuchowski and McClish (2011). "Statistical Methods in Diagnostic Medicine", <doi:10.1002/9780470906514>.
+
 }
 
 \seealso{
