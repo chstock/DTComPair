@@ -49,8 +49,7 @@ Moskowitz and Pepe (2006), "Comparing the predictive values of diagnostic tests:
 
 Pepe (2003, ISBN:978-0198509844), "The statistical evaluation of medical tests for classifcation and prediction".
 
-Zhou, Obuchowski and McClish (2011). "Statistical Methods in Diagnostic Medicine", <doi:10.1002/9780470906514>.
-
+Zhou, Obuchowski and McClish (2011), "Statistical Methods in Diagnostic Medicine", <doi:10.1002/9780470906514>.
 }
 
 \seealso{
