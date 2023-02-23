@@ -1,8 +1,3 @@
-# --------------------------------------------------------
-# Description: Function for DTComPair-package
-# Author: Christian Stock
-# Last modified: Jan 29, 2013
-# --------------------------------------------------------
 
 
 # --------------------------------------------------------
@@ -11,7 +6,7 @@
 dlr.regtest <- function(tab,alpha) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   if (missing(alpha)) alpha <- 0.05
   acc <- acc.paired(tab)

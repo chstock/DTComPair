@@ -1,7 +1,7 @@
 \name{print.tab.paired}
 \alias{print.tab.paired}
 \title{Print \dQuote{tab.paired}-Object}
-\description{Prints objects of class \code{\link{tab.paired}} in an easy-to-read form.
+\description{Prints objects of class \code{\link{tab.paired}} in an easy-to-read form (S3method).
 }
 \usage{
 \method{print}{tab.paired}(x, ...)
@@ -12,7 +12,7 @@
   \item{\dots}{Additional arguments (usually not required).
 }
 }
-
+\value{Creates a list object from parts of its input that is then printed in a tabular layout.}
 \seealso{
 \code{\link{tab.paired}},
 \code{\link{acc.paired}},

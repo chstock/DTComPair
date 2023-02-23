@@ -1,7 +1,7 @@
 \name{print.acc.1test}
 \alias{print.acc.1test}
 \title{Print \dQuote{acc.1test}-Object}
-\description{Prints objects of class \code{\link{acc.1test}} in an easy-to-read form.
+\description{Prints objects of class \code{\link{acc.1test}} in an easy-to-read form (S3method).
 }
 
 \usage{
@@ -13,7 +13,7 @@
   \item{\dots}{Additional arguments (usually not required).
 }
 }
-
+\value{Creates a list object from parts of its input that is then printed in a tabular layout.}
 \seealso{
 \code{\link{acc.1test}}.
 }

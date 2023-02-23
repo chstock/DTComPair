@@ -1,9 +1,3 @@
-# --------------------------------------------------------
-# Description: Function for DTComPair-package
-# Author: C. Stock
-# Last modified: Feb 15, 2014
-# --------------------------------------------------------
-
 
 # --------------------------------------------------------
 # sesp.diff.ci
@@ -11,7 +5,7 @@
 sesp.diff.ci <- function(tab, ci.method, alpha, cont.corr) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
-  if (class(tab) != "tab.paired") 
+  if (!(inherits(x=tab, what="tab.paired", which=F))) 
     stop("Table must be of class 'tab.paired'")
   if (missing(alpha)) alpha <- 0.05 
   if (missing(ci.method)) ci.method <- "wald"
