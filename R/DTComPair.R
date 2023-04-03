@@ -594,16 +594,41 @@ pv.rpv <- function(tab, alpha) {
   t.npv <- log(rel.npv) / se.log.rel.npv
   p.value <- 2*pnorm(-abs(t.npv))
   npv <- list(npv.1, npv.2, rel.npv, se.log.rel.npv, lcl, ucl, t.npv, p.value)
+  sigma.pn <- 
+    (((p1+p2)*p6)/((p5+p6)*(p1+p2+p5+p6)*(p2+p4+p6+p8))) +
+    (((p6+p8)*p2)/((p2+p4)*(p1+p2+p5+p6)*(p2+p4+p6+p8))) +
+    (((p1+p3)*p7)/((p5+p7)*(p1+p3+p5+p7)*(p3+p4+p7+p8))) +
+    (((p7+p8)*p3)/((p3+p4)*(p1+p3+p5+p7)*(p3+p4+p7+p8)))
+  Sigma <- matrix(c(sigma2.p, sigma.pn, sigma.pn, sigma2.n), ncol = 2,
+                  dimnames = list(c("log.rppv", "log.rnpv"),
+                                  c("log.rppv", "log.rnpv")))/N
   # results
   method <- "relative predictive values (rpv)"
-  results <- list(ppv,npv,method,alpha)
-  names(results) <- c("ppv","npv","method","alpha")
+  results <- list(ppv,npv,Sigma,method,alpha)
+  names(results) <- c("ppv","npv","Sigma","method","alpha")
   names(results$ppv) <- c("test1","test2","rppv","se.log.rppv","lcl.rppv","ucl.rppv","test.statistic","p.value")
   names(results$npv) <- c("test1","test2","rnpv","se.log.rnpv","lcl.rnpv","ucl.rnpv","test.statistic","p.value")
   return(results)
 }
 
-
+# --------------------------------------------------------
+# ellipse.pv.rpv
+# --------------------------------------------------------
+ellipse.pv.rpv <- function(x, level = 0.95, npoints = 100, exponentiate = FALSE) {
+  if (!x$method == "relative predictive values (rpv)")
+    stop("x must be an object from 'pr.rpv()' function")
+  centre <- c(log.rppv = log(x$ppv$rppv), 
+              log.rnpv = log(x$npv$rnpv))
+  Sigma <- x$Sigma
+  ellipse <- ellipse(x = Sigma , centre = centre, level = level, npoints = npoints)
+  ret <- list(centre = centre, ellipse = ellipse)
+  if (isTRUE(exponentiate)) {
+    ret <- lapply(ret, exp)
+    names(ret$centre) <- sapply(names(ret$centre), function(x) gsub("log.", "", x))
+    colnames(ret$ellipse) <- sapply(colnames(ret$ellipse), function(x) gsub("log.", "", x))
+  }
+  return(ret)
+}
 # --------------------------------------------------------
 # End 
 # --------------------------------------------------------
