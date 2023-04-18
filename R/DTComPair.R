@@ -614,13 +614,47 @@ pv.rpv <- function(tab, alpha) {
 # --------------------------------------------------------
 # ellipse.pv.rpv
 # --------------------------------------------------------
-ellipse.pv.rpv <- function(x, level = 0.95, npoints = 100, exponentiate = FALSE) {
+#' Elliptical joint confidence region for relative positive and
+#' negative predictive value
+#' 
+#' @description Returns a 100(1-alpha)\% elliptical joint confidence region for the parameter
+#' vector \{log(relative positive predictive value), log(relative negative predictive value)\}.
+#' 
+#' @usage ellipse.pv.rpv(x, alpha = 0.05, npoints = 100, exponentiate = FALSE)
+#'  
+#' @param x an object returned by the \code{pv.rpv} function.
+#' @param alpha significance level alpha used to compute the 100(1-alpha)\% region. The default is 0.05, for a 95\% region.
+#' @param npoints the number of points used in the ellipse. Default is 100.
+#' @param exponentiate a logical value indicating whether or not to exponentiate the values for the centre
+#' of the ellipse and for the the ellipsoidal outline. Defaults to FALSE.
+#' 
+#' @returns A list containing:
+#' \item{centre}{the centre of the ellipse.}
+#' \item{ellipse}{an \code{npoints} x 2 matrix with the x and y coordinates for
+#' the ellipsoidal outline. Suitable for \code{plot}-ing.}
+#' 
+#' @references Moskowitz, C.S., and Pepe, M.S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. \emph{Clin Trials}, 3(3):272-9.
+#' 
+#' @seealso \code{pv.rpv} and \code{ellipse::ellipse}.
+#' 
+#' @examples
+#' data(Paired1) # Hypothetical study data
+#' ftable(Paired1)
+#' paired.layout <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
+#' paired.layout 
+#' rpv.results <- pv.rpv(paired.layout)
+#' ellipse.data <- ellipse.pv.rpv(rpv.results)
+#' plot(ellipse.data$ellipse, type = "l", ylim = c(-0.25, 0.40), xlim = c(-0.25, 0.20))
+#' points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
+#' abline(h = 0, v = 0, lty = 3)
+#' 
+ellipse.pv.rpv <- function(x, alpha = 0.05, npoints = 100, exponentiate = FALSE) {
   if (!x$method == "relative predictive values (rpv)")
     stop("x must be an object from 'pr.rpv()' function")
   centre <- c(log.rppv = log(x$ppv$rppv), 
               log.rnpv = log(x$npv$rnpv))
   Sigma <- x$Sigma
-  ellipse <- ellipse(x = Sigma , centre = centre, level = level, npoints = npoints)
+  ellipse <- ellipse(x = Sigma , centre = centre, level = 1-alpha, npoints = npoints)
   ret <- list(centre = centre, ellipse = ellipse)
   if (isTRUE(exponentiate)) {
     ret <- lapply(ret, exp)
