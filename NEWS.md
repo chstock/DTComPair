@@ -1,4 +1,4 @@
-# DTComPair version 1.2.0 (2023-04-20)
+## DTComPair version 1.2.0 (2023-04-20)
 
 - `pv.rpv()` now returns the full variance-covariance matrix (`Sigma`)
 - `ellipse.pv.rpv()` generates the data to plot a joint confidence region for rPPV and rNPV (depends on the `ellipse` package) (as in Moskowitz and Pepe, 2006)
@@ -7,18 +7,18 @@
 - The new features were contributed by A. Discacciati - many thanks!
     
     
-# DTComPair version 1.1.0 (2023-02-21)
+## DTComPair version 1.1.0 (2023-02-21)
 
 - restored compatibility with CRAN requirements
 
     
-# DTComPair version 1.0.3 (2014-02-14)
+## DTComPair version 1.0.3 (2014-02-14)
 
 - corrected an error in `sesp.diff.ci` (detected by F. Gimenez - many thanks!)
 - minor documentation update
 
 
-# DTComPair version 1.0.2 (2013-11-12)
+## DTComPair version 1.0.2 (2013-11-12)
 
 - corrected an error in function `sesp.exactbinom` (detected by J. Swiecicki - many thanks!)
 - minor documentation update
