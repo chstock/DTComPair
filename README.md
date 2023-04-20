@@ -9,6 +9,8 @@
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/DTComPair)](https://CRAN.R-project.org/package=DTComPair)
+[![](http://cranlogs.r-pkg.org/badges/last-month/DTComPair)](https://cran.r-project.org/package=DTComPair)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/DTComPair)](https://cran.r-project.org/package=DTComPair)
 <!-- badges: end -->
 
 Comparison of the accuracy of two binary diagnostic tests in a “paired”
