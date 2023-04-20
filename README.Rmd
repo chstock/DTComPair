@@ -1,18 +1,19 @@
 ---
 output: github_document
 ---
-<!-- markdownlint-disable-file -->
-<!-- README.md needs to be generated from README.Rmd. Please edit that file -->
 
-# mmrm  <img src="man/figures/logo.svg" align="right" width="175" />
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, echo = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "README-"
+  comment = "#",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
+
+# DTComPair
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -20,9 +21,6 @@ knitr::opts_chunk$set(
 [![CRAN monthly downloads](https://cranlogs.r-pkg.org/badges/DTComPair)](https://cranlogs.r-pkg.org/badges/DTComPair)
 [![CRAN total downloads](https://cranlogs.r-pkg.org/badges/grand-total/DTComPair)](https://cranlogs.r-pkg.org/badges/grand-total/DTComPair)
 <!-- badges: end -->
-\
-
-## Description
 
 Comparison of the accuracy of two binary diagnostic tests in a "paired" study design, i.e. when each test is applied to each subject in the study.
 
@@ -71,4 +69,6 @@ print(b2)
 ## Citing `DTComPair`
 
 To cite `DTComPair` in publications please use: Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of binary diagnostic tests in a paired study design. R package, version 1.2.0. URL: https://CRAN.R-project.org/package=DTComPair.
+
+
 
