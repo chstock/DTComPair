@@ -5,7 +5,7 @@
 \title{Elliptical joint confidence region for relative positive and
 negative predictive value}
 \usage{
-\method{ellipse}{pv.rpv}(x, alpha = 0.05, npoints = 100, exponentiate = FALSE)
+ellipse.pv.rpv(x, alpha = 0.05, npoints = 100, exponentiate = FALSE)
 }
 \arguments{
 \item{x}{an object returned by the \code{pv.rpv} function.}
@@ -39,6 +39,7 @@ if(interactive()){
   points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
   abline(h = 0, v = 0, lty = 3)
 }
+
 }
 \references{
 Moskowitz, C.S., and Pepe, M.S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. \emph{Clin Trials}, 3(3):272-9.
