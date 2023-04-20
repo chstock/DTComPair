@@ -3,14 +3,11 @@
 
 # DTComPair
 
-<!-- badges: start -->
-
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
+<!-- badges: start --> [![Project Status: Active – The project has
+reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-<https://www.r-pkg.org/badges/version-last-release/DTComPair>
-<https://cranlogs.r-pkg.org/badges/DTComPair>
-<https://cranlogs.r-pkg.org/badges/grand-total/DTComPair>
+[![CRAN
+status](https://www.r-pkg.org/badges/version/DTComPair)](https://CRAN.R-project.org/package=DTComPair)
 <!-- badges: end -->
 
 Comparison of the accuracy of two binary diagnostic tests in a “paired”
@@ -38,7 +35,7 @@ remotes::install_github("chstock/DTComPair")
 
 ## Getting Started
 
-\*\* Determine the accuracy of one diagnostic test \*\*
+**Determine the accuracy of one diagnostic test**
 
 ``` r
 library(DTComPair)
@@ -69,7 +66,7 @@ print(a2)
 # NDLR  0.1765568 0.1346088 0.1356142 0.2298601
 ```
 
-\*\* Compare the accuracy of two diagnostic tests \*\*
+**Compare the accuracy of two diagnostic tests**
 
 ``` r
 b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)

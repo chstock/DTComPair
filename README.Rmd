@@ -15,12 +15,10 @@ knitr::opts_chunk$set(
 
 # DTComPair
 
-<!-- badges: start -->
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![CRAN status](https://www.r-pkg.org/badges/version-last-release/DTComPair)](https://www.r-pkg.org/badges/version-last-release/DTComPair)
-[![CRAN monthly downloads](https://cranlogs.r-pkg.org/badges/DTComPair)](https://cranlogs.r-pkg.org/badges/DTComPair)
-[![CRAN total downloads](https://cranlogs.r-pkg.org/badges/grand-total/DTComPair)](https://cranlogs.r-pkg.org/badges/grand-total/DTComPair)
-<!-- badges: end -->
+  <!-- badges: start -->
+  [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+  [![CRAN status](https://www.r-pkg.org/badges/version/DTComPair)](https://CRAN.R-project.org/package=DTComPair)
+  <!-- badges: end -->
 
 Comparison of the accuracy of two binary diagnostic tests in a "paired" study design, i.e. when each test is applied to each subject in the study.
 
@@ -46,7 +44,7 @@ remotes::install_github("chstock/DTComPair")
 
 ## Getting Started
 
-** Determine the accuracy of one diagnostic test **
+**Determine the accuracy of one diagnostic test**
 
 ```{r getting-started1}
 library(DTComPair)
@@ -57,7 +55,7 @@ a2 <- acc.1test(a1)
 print(a2)
 ```
 
-** Compare the accuracy of two diagnostic tests **
+**Compare the accuracy of two diagnostic tests**
 ```{r getting-started2}
 b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
 print(b1)
