@@ -5,7 +5,7 @@
 \title{Elliptical joint confidence region for relative positive and
 negative predictive value}
 \usage{
-ellipse.pv.rpv(x, alpha = 0.05, npoints = 100, exponentiate = FALSE)
+\method{ellipse.pv.rpv}{x}(alpha = 0.05, npoints = 100, exponentiate = FALSE)
 }
 \arguments{
 \item{x}{an object returned by the \code{pv.rpv} function.}
