@@ -5,12 +5,12 @@ bibentry(bibtype = "Misc",
              person(given = "Thomas", family = "Hielscher"),
              person(given = "Andrea", family = "Discacciati")),
   year = "2023",
-  note = "{R} package, version 1.1.0. {URL}: {https://CRAN.R-project.org/package=DTComPair}.",
+  note = "{R} package, version 1.2.0. {URL}: {https://CRAN.R-project.org/package=DTComPair}.",
   header = "To cite DTComPair in publications use:",
   textVersion = paste(
     "Stock C, Hielscher T, Discacciati A (2023).",
     "DTComPair: comparison of binary diagnostic tests in a paired study design.",
-    "R package, version 1.1.0.",
+    "R package, version 1.2.0.",
     "URL: https://CRAN.R-project.org/package=DTComPair."
   ),
   encoding = "UTF-8"
