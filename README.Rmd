@@ -1,0 +1,74 @@
+---
+output: github_document
+---
+<!-- markdownlint-disable-file -->
+<!-- README.md needs to be generated from README.Rmd. Please edit that file -->
+
+# mmrm  <img src="man/figures/logo.svg" align="right" width="175" />
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+<!-- badges: start -->
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![CRAN status](https://www.r-pkg.org/badges/version-last-release/DTComPair)](https://www.r-pkg.org/badges/version-last-release/DTComPair)
+[![CRAN monthly downloads](https://cranlogs.r-pkg.org/badges/DTComPair)](https://cranlogs.r-pkg.org/badges/DTComPair)
+[![CRAN total downloads](https://cranlogs.r-pkg.org/badges/grand-total/DTComPair)](https://cranlogs.r-pkg.org/badges/grand-total/DTComPair)
+<!-- badges: end -->
+\
+
+## Description
+
+Comparison of the accuracy of two binary diagnostic tests in a "paired" study design, i.e. when each test is applied to each subject in the study.
+
+
+## Installation
+
+**CRAN**
+
+You can install the current stable version from CRAN with:
+
+```{r cran-installation, eval = FALSE}
+install.packages("DTComPair")
+```
+
+**GitHub**
+
+You can install the current development version from GitHub with:
+
+```{r gh-installation, eval = FALSE}
+if (!require("remotes")) {install.packages("remotes")}
+remotes::install_github("chstock/DTComPair")
+```
+
+## Getting Started
+
+** Determine the accuracy of one diagnostic test **
+
+```{r getting-started1}
+library(DTComPair)
+data(Paired1) # Hypothetical study data
+a1 <- tab.1test(d=d, y=y1, data=Paired1)
+print(a1)
+a2 <- acc.1test(a1)
+print(a2)
+```
+
+** Compare the accuracy of two diagnostic tests **
+```{r getting-started2}
+b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
+print(b1)
+b2 <- acc.paired(b1)
+print(b2)
+```
+
+
+## Citing `DTComPair`
+
+To cite `DTComPair` in publications please use: Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of binary diagnostic tests in a paired study design. R package, version 1.2.0. URL: https://CRAN.R-project.org/package=DTComPair.
+
