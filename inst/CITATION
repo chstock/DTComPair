@@ -1,7 +1,6 @@
 bibentry(bibtype = "Misc",
   title = "{DTComPair}: comparison of binary diagnostic tests in a paired study design",
-  author = c(person(given = "Christian", family = "Stock",
-                    email = "christian.stock@boehringer-ingelheim.com"),
+  author = c(person(given = "Christian", family = "Stock"),
              person(given = "Thomas", family = "Hielscher"),
              person(given = "Andrea", family = "Discacciati")),
   year = "2023",
