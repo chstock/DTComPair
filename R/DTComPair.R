@@ -620,6 +620,8 @@ pv.rpv <- function(tab, alpha) {
 #' @description Returns a 100(1-alpha)\% elliptical joint confidence region for the parameter
 #' vector \{log(relative positive predictive value), log(relative negative predictive value)\}.
 #' 
+#' @usage ellipse.pv.rpv(x, alpha = 0.05, npoints = 100, exponentiate = FALSE)
+#' 
 #' @param x an object returned by the \code{pv.rpv} function.
 #' @param alpha significance level alpha used to compute the 100(1-alpha)\% region. The default is 0.05, for a 95\% region.
 #' @param npoints the number of points used in the ellipse. Default is 100.
@@ -647,14 +649,14 @@ pv.rpv <- function(tab, alpha) {
 #'   points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
 #'   abline(h = 0, v = 0, lty = 3)
 #' }
-#' @export
+#' 
 ellipse.pv.rpv <- function(x, alpha = 0.05, npoints = 100, exponentiate = FALSE) {
   if (!x$method == "relative predictive values (rpv)")
     stop("x must be an object from 'pr.rpv()' function")
   centre <- c(log.rppv = log(x$ppv$rppv), 
               log.rnpv = log(x$npv$rnpv))
   Sigma <- x$Sigma
-  ellipse <- ellipse(x = Sigma , centre = centre, level = 1-alpha, npoints = npoints)
+  ellipse <- ellipse::ellipse(x = Sigma , centre = centre, level = 1-alpha, npoints = npoints)
   ret <- list(centre = centre, ellipse = ellipse)
   if (isTRUE(exponentiate)) {
     ret <- lapply(ret, exp)
