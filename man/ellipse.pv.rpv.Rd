@@ -5,7 +5,7 @@
 \title{Elliptical joint confidence region for relative positive and
 negative predictive value}
 \usage{
-\method{ellipse.pv.rpv}{x}(alpha = 0.05, npoints = 100, exponentiate = FALSE)
+\method{ellipse}{pv.rpv}(x, alpha = 0.05, npoints = 100, exponentiate = FALSE)
 }
 \arguments{
 \item{x}{an object returned by the \code{pv.rpv} function.}
@@ -34,10 +34,11 @@ paired.layout <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
 paired.layout 
 rpv.results <- pv.rpv(paired.layout)
 ellipse.data <- ellipse.pv.rpv(rpv.results)
-plot(ellipse.data$ellipse, type = "l", ylim = c(-0.25, 0.40), xlim = c(-0.25, 0.20))
-points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
-abline(h = 0, v = 0, lty = 3)
-
+if(interactive()){
+  plot(ellipse.data$ellipse, type = "l", ylim = c(-0.25, 0.40), xlim = c(-0.25, 0.20))
+  points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
+  abline(h = 0, v = 0, lty = 3)
+}
 }
 \references{
 Moskowitz, C.S., and Pepe, M.S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. \emph{Clin Trials}, 3(3):272-9.
