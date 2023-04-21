@@ -4,7 +4,7 @@ Title: Comparison of Binary Diagnostic Tests in a Paired Study Design
 Version: 1.2.0
 Authors@R: c(
     person("Christian", "Stock", email = "christian.stock@boehringer-ingelheim.com", role = c("aut","cre"), comment = c(ORCID = "0000-0002-3493-3234")),
-    person("Hielscher", "Thomas", role = "aut"),
+    person("Thomas", "Hielscher", role = "aut"),
     person("Andrea", "Discacciati", email = "andrea.discacciati@ki.se", role = "aut")
     )
 Description: Comparison of the accuracy of two binary diagnostic tests in a "paired" study design, i.e. when each test is applied to each subject in the study.
