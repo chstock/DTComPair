@@ -12,7 +12,7 @@ Comparison of the accuracy of two binary diagnostic tests in a \dQuote{paired} s
 \tabular{ll}{
 Package: \tab DTComPair\cr
 Type: \tab Package\cr
-Version: \tab 1.1.0\cr
+Version: \tab 1.2.0\cr
 Date: \tab 2023-02-21\cr
 License: \tab GPL (>= 3)\cr
 }
@@ -31,7 +31,7 @@ For a general introduction into the evaluation of diagnostic tests see e.g. Pepe
 }
 
 \author{
-Christian Stock, Thomas Hielscher
+Christian Stock, Thomas Hielscher and Andrea Discacciati
 
 Maintainer: Christian Stock <christian.stock@boehringer-ingelheim.com>
 }
