@@ -8,7 +8,5 @@ S3method(print, tab.paired)
 importFrom("stats", "as.formula", "binomial", "coef", "formula",
            "model.matrix", "pchisq", "pnorm", "qnorm", "terms")
 
-importFrom(ellipse, ellipse)
-
 import(gee)
 import(PropCIs)
