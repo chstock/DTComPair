@@ -1,7 +1,7 @@
 Package: DTComPair
 Type: Package
 Title: Comparison of Binary Diagnostic Tests in a Paired Study Design 
-Version: 1.2.0
+Version: 1.2.1
 Authors@R: c(
     person("Christian", "Stock", email = "christian.stock@boehringer-ingelheim.com", role = c("aut","cre"), comment = c(ORCID = "0000-0002-3493-3234")),
     person("Thomas", "Hielscher", role = "aut"),
