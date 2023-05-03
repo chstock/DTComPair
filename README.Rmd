@@ -63,6 +63,8 @@ print(a2)
 ```
 
 **Compare the accuracy of two diagnostic tests**
+
+***Compute accuracy measures***
 ```{r getting-started2}
 b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
 print(b1)
@@ -70,10 +72,23 @@ b2 <- acc.paired(b1)
 print(b2)
 ```
 
+***Compare predictive values***
+
+Test based on weighted generalized score statistic:
+```{r getting-started3a}
+pv.wgs(b1)
+```
+
+
+Estimation and test of relative predictive values:
+```{r getting-started3b}
+pv.rpv(b1)
+```
+
 
 ## Citing `DTComPair`
 
-To cite `DTComPair` in publications please use: Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of binary diagnostic tests in a paired study design. R package, version 1.2.0. URL: https://CRAN.R-project.org/package=DTComPair.
+To cite `DTComPair` in publications please use: Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of binary diagnostic tests in a paired study design. R package, version 1.2.1. URL: https://CRAN.R-project.org/package=DTComPair.
 
 
 
