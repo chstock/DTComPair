@@ -571,7 +571,7 @@ pv.rpv <- function(tab, alpha) {
   # rppv
   ppv.1 <- acc$Test1$ppv["est"]; ppv.2 <- acc$Test2$ppv["est"]
   names(ppv.1) <- NULL; names(ppv.2) <- NULL
-  rel.ppv <- ppv.1/ppv.2; names(rel.ppv) <- NULL
+  rel.ppv <- ppv.2/ppv.1; names(rel.ppv) <- NULL
   sigma2.p <- (1/((p5+p7)*(p5+p6))) *
     (p6*(1-ppv.1) + p5*(ppv.1-ppv.2) +
        + 2*(p7+p3)*ppv.2*ppv.1 + p7*(1-3*ppv.2)  )
@@ -580,11 +580,11 @@ pv.rpv <- function(tab, alpha) {
   ucl <- exp(log(rel.ppv) + qnorm(1-alpha/2)*se.log.rel.ppv)
   t.ppv <- log(rel.ppv) / se.log.rel.ppv
   p.value <- 2*pnorm(-abs(t.ppv))
-  ppv <- list(ppv.1, ppv.2, rel.ppv, se.log.rel.ppv, lcl, ucl, t.ppv, p.value)
+  ppv <- c(ppv.1, ppv.2, rel.ppv, se.log.rel.ppv, lcl, ucl, t.ppv, p.value)
   # rnpv
   npv.1 <- acc$Test1$npv["est"]; npv.2 <- acc$Test2$npv["est"]
   names(npv.1) <- NULL; names(npv.2) <- NULL  
-  rel.npv <- npv.1/npv.2; names(rel.ppv) <- NULL
+  rel.npv <- npv.2/npv.1; names(rel.ppv) <- NULL
   sigma2.n <- (1/((p2+p4)*(p3+p4))) *
     ( npv.1*(-p3+p4-2*(p4+p8)*npv.2) + 
         (p2+p3) - npv.2*(p2-p4) )
@@ -593,7 +593,7 @@ pv.rpv <- function(tab, alpha) {
   ucl <- exp(log(rel.npv) + qnorm(1-alpha/2)*se.log.rel.npv)
   t.npv <- log(rel.npv) / se.log.rel.npv
   p.value <- 2*pnorm(-abs(t.npv))
-  npv <- list(npv.1, npv.2, rel.npv, se.log.rel.npv, lcl, ucl, t.npv, p.value)
+  npv <- c(npv.1, npv.2, rel.npv, se.log.rel.npv, lcl, ucl, t.npv, p.value)
   sigma.pn <- 
     (((p1+p2)*p6)/((p5+p6)*(p1+p2+p5+p6)*(p2+p4+p6+p8))) +
     (((p6+p8)*p2)/((p2+p4)*(p1+p2+p5+p6)*(p2+p4+p6+p8))) +
@@ -645,7 +645,7 @@ pv.rpv <- function(tab, alpha) {
 #' rpv.results <- pv.rpv(paired.layout)
 #' ellipse.data <- ellipse.pv.rpv(rpv.results)
 #' if(interactive()){
-#'   plot(ellipse.data$ellipse, type = "l", ylim = c(-0.25, 0.40), xlim = c(-0.25, 0.20))
+#'   plot(ellipse.data$ellipse, type = "l", ylim = c(-0.4, 0.2), xlim = c(-0.2, 0.2))
 #'   points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
 #'   abline(h = 0, v = 0, lty = 3)
 #' }
@@ -653,8 +653,8 @@ pv.rpv <- function(tab, alpha) {
 ellipse.pv.rpv <- function(x, alpha = 0.05, npoints = 100, exponentiate = FALSE) {
   if (!x$method == "relative predictive values (rpv)")
     stop("x must be an object from 'pr.rpv()' function")
-  centre <- c(log.rppv = log(x$ppv$rppv), 
-              log.rnpv = log(x$npv$rnpv))
+  centre <- c(log.rppv = log(x$ppv["rppv"]), 
+              log.rnpv = log(x$npv["rnpv"]))
   Sigma <- x$Sigma
   ellipse <- ellipse::ellipse(x = Sigma , centre = centre, level = 1-alpha, npoints = npoints)
   ret <- list(centre = centre, ellipse = ellipse)

@@ -15,12 +15,12 @@ sesp.rel(tab, alpha)
 A list containing:
 \item{sensitivity}{a named vector containing \code{test1} (the sensitivity for test 1), \code{test2} (the sensitivity for test 2), 
 \code{rel.sens} (the relative difference between the two sensitivities, computed as \code{test2/test1}), 
-\code{se.log.re.sens} (the standard error for log(\code{rel.sens})), \code{lcl.rel.sens} (the lower confidence limit for \code{rel.sens}), 
+\code{se.log.rel.sens} (the standard error for log(\code{rel.sens})), \code{lcl.rel.sens} (the lower confidence limit for \code{rel.sens}), 
  \code{ucl.rel.sens} (the upper confidence limit for \code{rel.sens}), and \code{pval.rel.sens} (the p-value from the test for
  the null hypothesis: relative sensitivity=1).}
 \item{specificity}{a named vector containing \code{test1} (the specificity for test 1), \code{test2} (the specificity for test 2), 
 \code{rel.spec} (the relative difference between the two specificities, computed as \code{test2/test1}), 
-\code{se.log.re.spec} (the standard error for log(\code{rel.spec})), \code{lcl.rel.spec} (the lower confidence limit for \code{rel.spec}), 
+\code{se.log.rel.spec} (the standard error for log(\code{rel.spec})), \code{lcl.rel.spec} (the lower confidence limit for \code{rel.spec}), 
  \code{ucl.rel.spec} (the upper confidence limit for \code{rel.spec}), and \code{pval.rel.spec} (the p-value from the test for
  the null hypothesis: relative specificity=1).}
 \item{alpha}{significance level alpha for 100(1-alpha)\%-confidence intervals for \code{rel.sens} and \code{rel.spec}.}
@@ -30,8 +30,8 @@ Calculates two-sided Wald confidence intervals and performs a Wald test for the 
 sensitivity and specificity of two binary diagnostic tests in a paired study design.
 }
 \details{
-If relative sensitivity>1, the percentage increase in sensitivty for \code{test2} relative to \code{test1} is computed as 100x(relative sensitivity-1)\%. If 
-relative sensitivity<1 the percentage decrease in sensitivty for \code{test2} relative to \code{test1} is computed as 100x(1-relative sensitivity)\%. 
+If relative sensitivity>1, the percentage increase in sensitivity for \code{test2} relative to \code{test1} is computed as 100(relative sensitivity-1)\%. If 
+relative sensitivity<1 the percentage decrease in sensitivity for \code{test2} relative to \code{test1} is computed as 100(1-relative sensitivity)\%. 
 Percentage increase/decrease in specificity is computed in an analogous fashion. 
 
 Given the independence of relative sensitivity and relative specificity, a possible joint 100(1-alpha)\% confidence region for \{relative sensitivity, relative specificity\}
