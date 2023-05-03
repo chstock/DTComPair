@@ -36,6 +36,12 @@ if (!require("remotes")) {install.packages("remotes")}
 remotes::install_github("chstock/DTComPair")
 ```
 
+## Scope
+
+Diagnostic accuracy measures that can be compared in the present version
+are sensitivity, specificity, positive and negative predictive values,
+and positive and negative diagnostic likelihood ratios.
+
 ## Getting Started
 
 **Determine the accuracy of one diagnostic test**
