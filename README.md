@@ -38,9 +38,9 @@ remotes::install_github("chstock/DTComPair")
 
 ## Scope
 
-Diagnostic accuracy measures that can be compared in the present version
-are sensitivity, specificity, positive and negative predictive values,
-and positive and negative diagnostic likelihood ratios.
+Diagnostic accuracy measures that can be computed and compared are
+sensitivity, specificity, positive and negative predictive values, and
+positive and negative diagnostic likelihood ratios.
 
 ## Getting Started
 
