@@ -35,7 +35,7 @@ paired.layout
 rpv.results <- pv.rpv(paired.layout)
 ellipse.data <- ellipse.pv.rpv(rpv.results)
 if(interactive()){
-  plot(ellipse.data$ellipse, type = "l", ylim = c(-0.25, 0.40), xlim = c(-0.25, 0.20))
+  plot(ellipse.data$ellipse, type = "l", ylim = c(-0.4, 0.2), xlim = c(-0.2, 0.2))
   points(ellipse.data$centre[1], ellipse.data$centre[2], col = "red", pch = 19)
   abline(h = 0, v = 0, lty = 3)
 }

@@ -13,9 +13,9 @@ pv.rpv(tab, alpha)
 
 \value{
 A list containing:
-\item{ppv}{List with \code{test1} (the positive predictive value of test 1), \code{test2} (the positive predictive value of test 2), \code{rppv} (the relative positive predictive value, computed as \code{test1 / test2}), \code{se.log.rppv} (the standard error of the logarithm of \code{rppv}),
+\item{ppv}{named vector containing \code{test1} (the positive predictive value of test 1), \code{test2} (the positive predictive value of test 2), \code{rppv} (the relative positive predictive value, computed as \code{test2 / test1}), \code{se.log.rppv} (the standard error of the logarithm of \code{rppv}),
 \code{lcl.rppv} (lower confidence limit of \code{rppv}), \code{ucl.rppv} (the upper confidence limit of \code{rppv}), the \code{test.statistic} and the corresponding \code{p.value}. }
-\item{npv}{List with \code{test1} (the negative predictive value of test 1), \code{test2} (the negative predictive value of test 2), \code{rnpv} (the relative negative predictive value, computed as \code{test1 / test2}), \code{se.log.rnpv} (the standard error of the logarithm of \code{rnpv}),
+\item{npv}{named vector containing \code{test1} (the negative predictive value of test 1), \code{test2} (the negative predictive value of test 2), \code{rnpv} (the relative negative predictive value, computed as \code{test2 / test1}), \code{se.log.rnpv} (the standard error of the logarithm of \code{rnpv}),
 \code{lcl.rnpv} (the lower confidence limit of \code{rnpv}), \code{ucl.rnpv} (the upper confidence limit of \code{rnpv}), the \code{test.statistic} and the corresponding \code{p.value}. }
 \item{Sigma}{Estimated variance-covariance matrix for \{log(relative positive predictive value), log(relative negative predictive value)\}.}
 \item{method}{Name of the method used to compare predictive values, here \dQuote{relative predictive values (rpv)}. }

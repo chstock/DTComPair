@@ -18,18 +18,18 @@
 #' @returns A list containing:
 #' \item{tpf}{a named vector containing 
 #' \code{rel.tpf} (the relative true positive fraction, Test2 vs. Test1), 
-#' \code{se.log.re.tpf} (the standard error for log(\code{rel.tpf})), \code{lcl.rel.tpf} (the lower confidence limit for \code{rel.tpf}), 
+#' \code{se.log.rel.tpf} (the standard error for log(\code{rel.tpf})), \code{lcl.rel.tpf} (the lower confidence limit for \code{rel.tpf}), 
 #'  \code{ucl.rel.tpf} (the upper confidence limit for \code{rel.tpf}), and \code{pval.rel.tpf} (the p-value from the test for
 #'  the null hypothesis: relative true positive fraction=1).}
 #' \item{fpf}{a named vector containing 
 #' \code{rel.fpf} (the relative false positive fraction, Test2 vs. Test1), 
-#' \code{se.log.re.fpf} (the standard error for log(\code{rel.fpf})), \code{lcl.rel.fpf} (the lower confidence limit for \code{rel.fpf}), 
+#' \code{se.log.rel.fpf} (the standard error for log(\code{rel.fpf})), \code{lcl.rel.fpf} (the lower confidence limit for \code{rel.fpf}), 
 #'  \code{ucl.rel.fpf} (the upper confidence limit for \code{rel.fpf}), and \code{pval.rel.fpf} (the p-value from the test for
 #'  the null hypothesis: relative false positive fraction=1).}
 #' \item{alpha}{significance level alpha for 100(1-alpha)\%-confidence intervals for \code{rel.tpf} and \code{rel.fpf}.}
 #' 
-#' @details If relative true positive fraction>1, the percentage increase in true positive fraction for Test2 relative to Test1 is computed as 100x(relative true positive fraction-1)\%. If 
-#' relative true positive fraction<1 the percentage decrease in true positive fraction for Test2 relative to Test1 is computed as 100x(1-relative true positive fraction)\%. 
+#' @details If relative true positive fraction>1, the percentage increase in true positive fraction for Test2 relative to Test1 is computed as 100(relative true positive fraction-1)\%. If 
+#' relative true positive fraction<1 the percentage decrease in true positive fraction for Test2 relative to Test1 is computed as 100(1-relative true positive fraction)\%. 
 #' Percentage increase/decrease in false positive fraction is computed in an analogous fashion. 
 #' 
 #' Given the independence of relative TPR and relative TNR, a possible joint 100(1-alpha)\% confidence region for \{relative TPF, relative FPF\}
@@ -39,8 +39,8 @@
 #' In screen positive studies, only relative TPF and relative FPF can be estimated from the data. 
 #' Their constituents, i.e. TPF and FPF for the two tests, are not estimable. 
 #' Relative specificity is not estimable either. Therefore, \code{sesp.rel} should not 
-#' be used to attempt to estimate those quantities from studies with a paired screen positive design. Interestingly enough, however, 
-#' McNemar's test (\code{sesp.mcnemar}) can still be used to test the null hypothesis of equality in specificities in 
+#' be used to attempt to estimate those quantities from studies with a paired screen positive design. 
+#' McNemar's test (\code{sesp.mcnemar}) can, however, be used to test the null hypothesis of equality in specificities in 
 #' paired screen positive studies (Schatzkin et al., 1987).
 #' 
 #' @references Schatzkin, A., Connor, R. J., Taylor, P. R., & Bunnag, B. (1987). Comparing new and old screening tests when a reference procedure cannot be performed on all screenees: example of automated cytometry for early detection of cervical cancer. \emph{American Journal of Epidemiology}, 125(4), 672-678.
