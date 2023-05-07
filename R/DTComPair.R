@@ -1,7 +1,7 @@
 # --------------------------------------------------------
 # Description: Functions for DTComPair-package
-# Author: C. Stock
-# Last modified: Feb 15, 2014
+# Author: C. Stock and A. Discacciati 
+# Last modified: 7 May 2023
 # --------------------------------------------------------
 
 
