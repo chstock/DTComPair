@@ -135,14 +135,14 @@ print(b2)
 Test based on weighted generalized score statistic:
 
 ``` r
-pv.wgs(b1)
+pv.wgs(b1) 
 # $ppv
 #          test1          test2           diff test.statistic        p.value 
 #     0.82536383     0.86548223     0.04011841     5.46588745     0.01939120 
 # 
 # $npv
 #          test1          test2           diff test.statistic        p.value 
-#   7.662338e-01   6.540881e-01   1.121457e-01   1.653540e+01   4.775012e-05 
+#   7.662338e-01   6.540881e-01  -1.121457e-01   1.653540e+01   4.775012e-05 
 # 
 # $method
 # [1] "weighted generalized score statistic (wgs)"
