@@ -67,7 +67,7 @@ print(a2)
 ***Compute accuracy measures***
 ```{r getting-started2}
 b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
-print(b1)
+print(b1) 
 b2 <- acc.paired(b1)
 print(b2)
 ```

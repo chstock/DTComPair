@@ -81,7 +81,7 @@ print(a2)
 
 ``` r
 b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
-print(b1)
+print(b1) 
 # Two binary diagnostic tests (paired design)
 # 
 # Test1: 'y1'
@@ -137,38 +137,12 @@ Test based on weighted generalized score statistic:
 ``` r
 pv.wgs(b1)
 # $ppv
-# $ppv$test1
-# [1] 0.8253638
-# 
-# $ppv$test2
-# [1] 0.8654822
-# 
-# $ppv$diff
-# [1] 0.04011841
-# 
-# $ppv$test.statistic
-# [1] 5.465887
-# 
-# $ppv$p.value
-# [1] 0.0193912
-# 
+#          test1          test2           diff test.statistic        p.value 
+#     0.82536383     0.86548223     0.04011841     5.46588745     0.01939120 
 # 
 # $npv
-# $npv$test1
-# [1] 0.7662338
-# 
-# $npv$test2
-# [1] 0.6540881
-# 
-# $npv$diff
-# [1] 0.1121457
-# 
-# $npv$test.statistic
-# [1] 16.5354
-# 
-# $npv$p.value
-# [1] 4.775012e-05
-# 
+#          test1          test2           diff test.statistic        p.value 
+#   7.662338e-01   6.540881e-01   1.121457e-01   1.653540e+01   4.775012e-05 
 # 
 # $method
 # [1] "weighted generalized score statistic (wgs)"
