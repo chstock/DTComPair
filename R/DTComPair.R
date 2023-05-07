@@ -462,7 +462,7 @@ pv.gs <- function(tab) {
                    tab$non.diseased[2,1]*(0-z.bar)^2 )
   t.ppv <- numerator/denominator
   p.value <- 1-pchisq(t.ppv, df=1) 
-  ppv <- list(ppv.1, ppv.2, diff.ppv, t.ppv, p.value)
+  ppv <- c(ppv.1, ppv.2, diff.ppv, t.ppv, p.value)
   ## npv
   npv.1 <- acc$Test1$npv["est"]; npv.2 <- acc$Test2$npv["est"]
   names(npv.1) <- NULL; names(npv.2) <- NULL
@@ -488,7 +488,7 @@ pv.gs <- function(tab) {
                    tab$diseased[1,2]*(0-z.bar)^2 )
   t.npv <- numerator/denominator
   p.value <- 1-pchisq(t.npv, df=1)  
-  npv <- list(npv.1, npv.2, diff.npv, t.npv, p.value)
+  npv <- c(npv.1, npv.2, diff.npv, t.npv, p.value)
   # results
   method <- "generalized score statistic (gs)"
   results <- list(ppv,npv,method)
