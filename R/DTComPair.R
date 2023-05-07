@@ -440,7 +440,7 @@ pv.gs <- function(tab) {
   ## ppv
   ppv.1 <- acc$Test1$ppv["est"]; ppv.2 <- acc$Test2$ppv["est"]
   names(ppv.1) <- NULL; names(ppv.2) <- NULL
-  diff.ppv <- abs(ppv.1-ppv.2); names(diff.ppv) <- NULL
+  diff.ppv <- ppv.2-ppv.1; names(diff.ppv) <- NULL
   # proportion of positive tests of type 2
   z.bar <- sum(c(tab$diseased[1,3], tab$non.diseased[1,3])) /
            sum(c(tab$diseased[1,c(1,3)], tab$diseased[2,1],
@@ -466,7 +466,7 @@ pv.gs <- function(tab) {
   ## npv
   npv.1 <- acc$Test1$npv["est"]; npv.2 <- acc$Test2$npv["est"]
   names(npv.1) <- NULL; names(npv.2) <- NULL
-  diff.npv <- abs(npv.1-npv.2); names(diff.npv) <- NULL
+  diff.npv <- npv.2-npv.1; names(diff.npv) <- NULL
   # proportion of negative tests of type 2
   z.bar <- sum(c(tab$diseased[2,3], tab$non.diseased[2,3])) /
            sum(c(tab$diseased[2,c(2,3)], tab$diseased[1,2],
@@ -511,7 +511,7 @@ pv.wgs <- function(tab) {
   ## ppv
   ppv.1 <- acc$Test1$ppv["est"]; ppv.2 <- acc$Test2$ppv["est"]
   names(ppv.1) <- NULL; names(ppv.2) <- NULL
-  diff.ppv <- abs(ppv.1-ppv.2); names(diff.ppv) <- NULL
+  diff.ppv <- ppv.2-ppv.1; names(diff.ppv) <- NULL
   ppv.pooled <- (tab$diseased[1,1]*2 + tab$diseased[1,2] + tab$diseased[2,1]) /
     (tab$diseased[1,3] + tab$non.diseased[1,3] + tab$diseased[3,1] + tab$non.diseased[3,1])
   numerator <- diff.ppv**2
@@ -526,7 +526,7 @@ pv.wgs <- function(tab) {
   ## npv
   npv.1 <- acc$Test1$npv["est"]; npv.2 <- acc$Test2$npv["est"]
   names(npv.1) <- NULL; names(npv.2) <- NULL  
-  diff.npv <- abs(npv.1-npv.2); names(diff.npv) <- NULL  
+  diff.npv <- npv.2-npv.1; names(diff.npv) <- NULL  
   npv.pooled <- (tab$non.diseased[2,2]*2 + tab$non.diseased[1,2] + tab$non.diseased[2,1]) /
     (tab$diseased[2,3] + tab$non.diseased[2,3] + tab$diseased[3,2] + tab$non.diseased[3,2])
   numerator <- diff.npv**2

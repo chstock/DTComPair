@@ -1,3 +1,9 @@
+## DTComPair version 1.2.1 (2023-05-07)
+
+- Functions that compare sensitivity/ specificity and predictive values now return lists of vectors (instead of lists of lists)
+- `Test 1` is consistently used as the reference test
+- In `pv.gs`and `pv.wgs`, it is now `diff.ppv <- ppv.2-ppv.1` (instead of `diff.ppv <- abs(ppv.1-ppv.2)`), and accordingly for negative predictive values
+
 ## DTComPair version 1.2.0 (2023-04-20)
 
 - `pv.rpv()` now returns the full variance-covariance matrix (`Sigma`)
@@ -9,16 +15,16 @@
     
 ## DTComPair version 1.1.0 (2023-02-21)
 
-- restored compatibility with CRAN requirements
+- Restored compatibility with CRAN requirements
 
     
 ## DTComPair version 1.0.3 (2014-02-14)
 
-- corrected an error in `sesp.diff.ci` (detected by F. Gimenez - many thanks!)
-- minor documentation update
+- Corrected an error in `sesp.diff.ci` (detected by F. Gimenez - many thanks!)
+- Minor documentation update
 
 
 ## DTComPair version 1.0.2 (2013-11-12)
 
-- corrected an error in function `sesp.exactbinom` (detected by J. Swiecicki - many thanks!)
-- minor documentation update
+- Corrected an error in function `sesp.exactbinom` (detected by J. Swiecicki - many thanks!)
+- Minor documentation update
