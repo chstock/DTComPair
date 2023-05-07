@@ -370,7 +370,7 @@ sesp.mcnemar <- function(tab) {
   b <- tab$diseased[1,2]; c <- tab$diseased[2,1]
   X2 <- ((b-c)^2)/(b+c)
   p.value <- 1-pchisq(X2, df=1)
-  sensitivity <- list(se.1, se.2, diff.sens, X2, p.value)
+  sensitivity <- c(se.1, se.2, diff.sens, X2, p.value)
   # specificity
   sp.1 <- acc$Test1$specificity["est"]; sp.2 <- acc$Test2$specificity["est"]
   names(sp.1) <- NULL; names(sp.2) <- NULL
@@ -378,7 +378,7 @@ sesp.mcnemar <- function(tab) {
   b <- tab$non.diseased[1,2]; c <- tab$non.diseased[2,1]
   X2 <- ((b-c)^2)/(b+c)
   p.value <- 1-pchisq(X2, df=1)
-  specificity <- list(sp.1, sp.2, diff.spec, X2, p.value)
+  specificity <- c(sp.1, sp.2, diff.spec, X2, p.value)
   # results
   method <- "mcnemar"
   results <- list(sensitivity, specificity, method)
@@ -407,7 +407,7 @@ sesp.exactbinom <- function(tab) {
   k <- min(tab$diseased[1,2], tab$diseased[2,1])
   csum <- 0; for (j in 0:k) csum <- csum+choose(m,j)
   p.value <- 2*csum*(0.5^m)
-  sensitivity <- list(se.1,se.2,diff.sens,p.value)
+  sensitivity <- c(se.1,se.2,diff.sens,p.value)
   # specificity
   sp.1 <- acc$Test1$specificity["est"]; sp.2 <- acc$Test2$specificity["est"]
   names(sp.1) <- NULL; names(sp.2) <- NULL
@@ -416,7 +416,7 @@ sesp.exactbinom <- function(tab) {
   k <- min(tab$non.diseased[1,2], tab$non.diseased[2,1])
   csum <- 0; for (j in 0:k) csum <- csum+choose(m,j)
   p.value <- 2*csum*(0.5^m)
-  specificity <- list(sp.1,sp.2,diff.spec,p.value)
+  specificity <- c(sp.1,sp.2,diff.spec,p.value)
   # results
   method <- "exactbinom"
   results <- list(sensitivity,specificity,method) 
