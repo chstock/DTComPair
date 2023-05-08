@@ -3,6 +3,7 @@
 - Functions that compare sensitivity/ specificity and predictive values now return lists of vectors (instead of lists of lists)
 - `Test 1` is consistently used as the reference test
 - In `pv.gs`and `pv.wgs`, it is now `diff.ppv <- ppv.2-ppv.1` (instead of `diff.ppv <- abs(ppv.1-ppv.2)`), and accordingly for negative predictive values
+- Added new function (`pv.prev`) to allow computation of positive and negative predictive values for different theoretical prevalances.
 
 ## DTComPair version 1.2.0 (2023-04-20)
 
