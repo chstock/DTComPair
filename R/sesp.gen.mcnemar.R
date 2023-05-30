@@ -10,7 +10,7 @@
 #' 
 #' @references Lachenbruch P.A., Lynch C.J. (1998). Assessing screening tests: extensions of McNemar's test. \emph{Stat Med}, 17(19): 2207-17.
 #' 
-#' @seealso [DTComPair::tab.paired()], [DTComPair::read.tab.paired()] and [DTComPair::sesp.mcnemar()]
+#' @seealso [tab.paired()], [read.tab.paired()] and [sesp.mcnemar()]
 #'
 #' @examples
 #' # Example 1:
