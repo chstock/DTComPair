@@ -9,13 +9,6 @@ Comparison of the accuracy of two binary diagnostic tests in a \dQuote{paired} s
 }
 
 \details{
-\tabular{ll}{
-Package: \tab DTComPair\cr
-Type: \tab Package\cr
-Version: \tab 1.2.0\cr
-Date: \tab 2023-02-21\cr
-License: \tab GPL (>= 3)\cr
-}
 
 The accuracy measures that can be compared in the present version are sensitivity, specificity, positive and negative predictive values, and positive and negative diagnostic likelihood ratios.  
 
