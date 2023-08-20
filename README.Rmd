@@ -88,7 +88,7 @@ pv.rpv(b1)
 
 ## Citing `DTComPair`
 
-To cite `DTComPair` in publications please use: Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of binary diagnostic tests in a paired study design. R package, version 1.2.1. URL: https://CRAN.R-project.org/package=DTComPair.
 
-
-
+```{r citation}
+citation("DTComPair")
+```
