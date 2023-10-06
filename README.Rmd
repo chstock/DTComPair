@@ -76,7 +76,7 @@ print(b2)
 
 Test based on weighted generalized score statistic:
 ```{r getting-started3a}
-pv.wgs(b1) 
+pv.wgs(b1)  
 ```
 
 
