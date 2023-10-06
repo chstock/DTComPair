@@ -20,9 +20,9 @@ tab.1test <-  function(d, y, data=NULL, testname, ...) {
   if ((is.numeric(y)==FALSE) & (is.factor(y)==FALSE))
     stop("Test result (y) must be a integer variable.")
   d <- as.integer(d); y <- as.integer(y); 
-  if (identical(sort(unique(d)), as.integer(c(0,1)))==FALSE) 
+  if (all(unique(d) %in% as.integer(c(0, 1))) == FALSE) 
     stop("Disease status (d) must be coded as 0 or 1.")
-  if (identical(sort(unique(y)), as.integer(c(0,1)))==FALSE) 
+  if (all(unique(y) %in% as.integer(c(0, 1))) == FALSE) 
     stop("Test result (y) must be coded as 0 or 1.")
   if ((length(d) != length(y))) stop("Vector lengths differ.") 
   # matrix
@@ -187,11 +187,11 @@ tab.paired <-  function(d, y1, y2, data=NULL, testnames, ...) {
   if ((is.numeric(y2)==FALSE) & (is.factor(y2)==FALSE))
     stop("Test result (y2) must be a numeric or factor variable.")
   d <- as.integer(d); y1 <- as.integer(y1); y2 <- as.integer(y2);
-  if (identical(sort(unique(d)), as.integer(c(0,1)))==FALSE) 
+  if (all(unique(d) %in% as.integer(c(0, 1))) == FALSE)
     stop("Disease status (d) must be coded as 0 or 1.")
-  if (identical(sort(unique(y1)), as.integer(c(0,1)))==FALSE) 
+  if (all(unique(y1) %in% as.integer(c(0, 1))) == FALSE)
     stop("Test result (y1) must be coded as 0 or 1.")
-  if (identical(sort(unique(y2)), as.integer(c(0,1)))==FALSE) 
+  if (all(unique(y2) %in% as.integer(c(0, 1))) == FALSE) 
     stop("Test result (y2) must be coded as 0 or 1.")
   if ((length(d) != length(y1)) | (length(y1) != length(y2)) ) 
     stop("Vector lengths differ.")

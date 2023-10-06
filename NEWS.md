@@ -1,3 +1,8 @@
+## DTComPair version 1.2.3 (development version)
+
+- `tab.paired` now allows for data where all subjects are either diseased or nondiseased
+- ...
+
 ## DTComPair version 1.2.2 (2023-08-20)
 
 - Functions that compare sensitivity/ specificity and predictive values now return lists of vectors (instead of lists of lists).
