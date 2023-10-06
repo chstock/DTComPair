@@ -1,6 +1,6 @@
 ## DTComPair version 1.2.3 (development version)
 
-- `tab.paired` and `tab.1test` now allows for data where all subjects are either diseased or nondiseased
+- `tab.paired` and `tab.1test` now allow for data where all subjects are either diseased or nondiseased
 - ...
 
 ## DTComPair version 1.2.2 (2023-08-20)
