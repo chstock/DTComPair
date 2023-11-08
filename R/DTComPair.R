@@ -653,8 +653,8 @@ pv.rpv <- function(tab, alpha) {
 ellipse.pv.rpv <- function(x, alpha = 0.05, npoints = 100, exponentiate = FALSE) {
   if (!x$method == "relative predictive values (rpv)")
     stop("x must be an object from 'pr.rpv()' function")
-  centre <- c(log.rppv = log(x$ppv["rppv"]), 
-              log.rnpv = log(x$npv["rnpv"]))
+  centre <- c(log.rppv = log(x$ppv[["rppv"]]), 
+              log.rnpv = log(x$npv[["rnpv"]]))
   Sigma <- x$Sigma
   ellipse <- ellipse::ellipse(x = Sigma , centre = centre, level = 1-alpha, npoints = npoints)
   ret <- list(centre = centre, ellipse = ellipse)
