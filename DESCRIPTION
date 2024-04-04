@@ -9,7 +9,7 @@ Authors@R: c(
     )
 Description: Comparison of the accuracy of two binary diagnostic tests in a "paired" study design, i.e. when each test is applied to each subject in the study.
 License: GPL (>= 3)
-URL: https://github.com/chstock/DTComPair
+URL: https://github.com/chstock/DTComPair, https://chstock.github.io/DTComPair/
 BugReports: https://github.com/chstock/DTComPair/issues
 Encoding: UTF-8
 LazyData: true  
@@ -22,4 +22,4 @@ Depends:
 Suggests: 
     knitr,
     rmarkdown
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
