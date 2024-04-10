@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">DTComPair</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
 <p>Leisenring, Alonzo and Pepe (2000), "Comparisons of predictive values of binary medical diagnostic tests for paired designs", &lt;doi:10.1111/j.0006-341X.2000.00345.x&gt;.</p>
 <p>McNemar (1947), "Note on the sampling error of the difference between correlated proportions or percentages",  &lt;doi:10.1007/BF02295996&gt;.</p>
 <p>Moskowitz and Pepe (2006), "Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs", &lt;doi:10.1191/1740774506cn147oa&gt;.</p>
-<p>Pepe (2003, ISBN:978-0198509844), "The statistical evaluation of medical tests for classifcation and prediction".</p>
+<p>Pepe (2003, ISBN:978-0198509844), "The statistical evaluation of medical tests for classification and prediction".</p>
 <p>Zhou, Obuchowski and McClish (2011), "Statistical Methods in Diagnostic Medicine", &lt;doi:10.1002/9780470906514&gt;.</p>
     </div>
     <div class="section level2">
