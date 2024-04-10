@@ -74,8 +74,8 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Predictive values, assuming a certain prevalence of the disease, 
 are derived using the relation between predictive values and diagnostic likelihood ratios:</p>
-<p>- PPV = 1 / 1 + (1 / pi - 1) / pDLR
-  - NPV = 1 / 1 + (1 / (1 / pi - 1)) / nDLR.</p>  
+<p>- PPV = 1 / (1 + (1 / pi - 1) / pDLR)
+  - NPV = 1 / (1 + (1 / (1 / pi - 1)) / nDLR).</p>  
 <p>See Newcombe RG (2013). Confidence Intervals for Proportions and Related Measures of Effect Size. Chapman and Hall/ CRC Biostatistics Series (chapters 12.3+5 and 14.9).</p>
 <p>The alpha-level of (1-alpha)-confidence intervals is inherited from `acc.1test`.</p>
     </div>
