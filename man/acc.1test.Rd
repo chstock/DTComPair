@@ -40,7 +40,7 @@ The calculation of accuracy measures and their variances follows standard method
 }
 
 \references{
-Pepe, M. (2003). The statistical evaluation of medical tests for classifcation and prediction. Oxford Statistical Science Series. Oxford University Press, 1st edition.
+Pepe, M. (2003). The statistical evaluation of medical tests for classification and prediction. Oxford Statistical Science Series. Oxford University Press, 1st edition.
 
 Simel, D.L., Samsa, G.P., Matchar, D.B. (1991). Likelihood ratios with confidence: sample size estimation for diagnostic test
 studies. \emph{J Clin Epidemiol}, 44(8):763-70.

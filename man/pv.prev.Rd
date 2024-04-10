@@ -7,7 +7,7 @@
 pv.prev(pi, acc)
 }
 \arguments{
-\item{pi}{A theoretical prevalance of the disease (proportion).}
+\item{pi}{A theoretical prevalence of the disease (proportion).}
 
 \item{acc}{An object of class `acc.1test`.}
 }
@@ -15,10 +15,10 @@ pv.prev(pi, acc)
 A vector containing the projected values.
 }
 \description{
-It is often of interest to estimate predcitive values assuming the test were applied to a population with a different prevalance of the disease. Projected predictive values may be calculated using Bayes theorem and the relation between predictive values and diganostic likelihood ratios can be used to derived corresponding confidence intervals.
+It is often of interest to estimate predictive values assuming the test were applied to a population with a different prevalence of the disease. Projected predictive values may be calculated using Bayes theorem and the relation between predictive values and diagnostic likelihood ratios can be used to derived corresponding confidence intervals.
 }
 \details{
-Predictive values, assuming a certain prevalance of the disease, 
+Predictive values, assuming a certain prevalence of the disease, 
 are derived using the relation between predictive values and diagnostic likelihood ratios:
 
   - PPV = 1 / {1 + (1 / pi - 1) / pDLR}

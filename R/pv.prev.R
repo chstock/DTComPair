@@ -1,18 +1,18 @@
 #' Compute predictive values for theoretical prevalences
 #' 
-#' @description It is often of interest to estimate predcitive values assuming the test were applied to a population with a different prevalance of the disease. Projected predictive values may be calculated using Bayes theorem and the relation between predictive values and diganostic likelihood ratios can be used to derived corresponding confidence intervals.
+#' @description It is often of interest to estimate predictive values assuming the test were applied to a population with a different prevalence of the disease. Projected predictive values may be calculated using Bayes theorem and the relation between predictive values and diagnostic likelihood ratios can be used to derived corresponding confidence intervals.
 #' 
-#' @param pi A theoretical prevalance of the disease (proportion).
+#' @param pi A theoretical prevalence of the disease (proportion).
 #' @param acc An object of class `acc.1test`.
 #'
 #' @return A vector containing the projected values.
 #' @export
 #' 
-#' @details Predictive values, assuming a certain prevalance of the disease, 
+#' @details Predictive values, assuming a certain prevalence of the disease, 
 #' are derived using the relation between predictive values and diagnostic likelihood ratios:
 #' 
-#'   - PPV = 1 / {1 + (1 / pi - 1) / pDLR}
-#'   - NPV = 1 / {1 + (1 / (1 / pi - 1)) / nDLR}. 
+#'   - PPV = 1 / (1 + (1 / pi - 1) / pDLR)
+#'   - NPV = 1 / (1 + (1 / (1 / pi - 1)) / nDLR). 
 #'   
 #' See Newcombe RG (2013). Confidence Intervals for Proportions and Related Measures of Effect Size. Chapman and Hall/ CRC Biostatistics Series (chapters 12.3+5 and 14.9).
 #' 
