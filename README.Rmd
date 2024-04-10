@@ -13,9 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-<a href="https://chstock.github.io/DTComPair/"><img src="man/figures/logo.png" align="right" height="139" alt="DTComPair website" /></a>
+# DTComPair <a href="https://chstock.github.io/DTComPair/"><img src="man/figures/logo.png" align="right" height="139" alt="DTComPair website" /></a>
 
-# DTComPair
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)

@@ -1,9 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<a href="https://chstock.github.io/DTComPair/"><img src="man/figures/logo.png" align="right" height="139" alt="DTComPair website" /></a>
-
-# DTComPair
+# DTComPair <a href="https://chstock.github.io/DTComPair/"><img src="man/figures/logo.png" align="right" height="139" alt="DTComPair website" /></a>
 
 <!-- badges: start -->
 
