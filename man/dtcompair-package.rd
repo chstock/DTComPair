@@ -40,7 +40,7 @@ McNemar (1947), "Note on the sampling error of the difference between correlated
 
 Moskowitz and Pepe (2006), "Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs", <doi:10.1191/1740774506cn147oa>.
 
-Pepe (2003, ISBN:978-0198509844), "The statistical evaluation of medical tests for classifcation and prediction".
+Pepe (2003, ISBN:978-0198509844), "The statistical evaluation of medical tests for classification and prediction".
 
 Zhou, Obuchowski and McClish (2011), "Statistical Methods in Diagnostic Medicine", <doi:10.1002/9780470906514>.
 }
