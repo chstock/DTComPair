@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<a href="https://chstock.github.io/DTComPair/"><img src="man/figures/logo.png" align="right" height="139" alt="DTComPair website" /></a>
+
 # DTComPair
 
 <!-- badges: start -->
@@ -135,7 +137,7 @@ print(b2)
 Test based on weighted generalized score statistic:
 
 ``` r
-pv.wgs(b1) 
+pv.wgs(b1)  
 # $ppv
 #          test1          test2           diff test.statistic        p.value 
 #     0.82536383     0.86548223     0.04011841     5.46588745     0.01939120 
