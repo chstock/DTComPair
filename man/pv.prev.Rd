@@ -21,8 +21,8 @@ It is often of interest to estimate predictive values assuming the test were app
 Predictive values, assuming a certain prevalence of the disease, 
 are derived using the relation between predictive values and diagnostic likelihood ratios:
 
-  - PPV = 1 / {1 + (1 / pi - 1) / pDLR}
-  - NPV = 1 / {1 + (1 / (1 / pi - 1)) / nDLR}. 
+  - PPV = 1 / (1 + (1 / pi - 1) / pDLR)
+  - NPV = 1 / (1 + (1 / (1 / pi - 1)) / nDLR). 
   
 See Newcombe RG (2013). Confidence Intervals for Proportions and Related Measures of Effect Size. Chapman and Hall/ CRC Biostatistics Series (chapters 12.3+5 and 14.9).
 
