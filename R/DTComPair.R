@@ -87,27 +87,23 @@ acc.1test <-  function(tab, alpha, testname, method, ...) {
   method.fun <- match.fun(method)
   tab <- tab[[1]]
   if (missing(alpha)) alpha <- 0.05
-  emptylist <- list(se = NA, conf.int = c(NA, NA))
+  emptylist <- list(stderr = NA, conf.int = c(NA, NA))
   # sensitivity and specificity
   sens.est <- tab[1,1]/tab[3,1]
-  sens.ci <- emptylist
-  if (tab[3,1] > 0) sens.ci <- method.fun(tab[1,1], tab[3,1], 1-alpha)
+  sens.ci <- if (tab[3,1] > 0) method.fun(tab[1,1], tab[3,1], 1-alpha) else emptylist
   sensitivity <- c(sens.est,unlist(modifyList(emptylist, sens.ci)))
   names(sensitivity) <- c("est","se","lcl","ucl")
   spec.est <- tab[2,2]/tab[3,2]
-  spec.ci <- emptylist
-  if (tab[3,2] > 0) spec.ci <- method.fun(tab[2,2], tab[3,2], 1-alpha)
+  spec.ci <- if (tab[3,2] > 0) method.fun(tab[2,2], tab[3,2], 1-alpha) else emptylist
   specificity <- c(spec.est,unlist(modifyList(emptylist, spec.ci)))
   names(specificity) <- c("est","se","lcl","ucl")
   # predictive values
   ppv.est <- tab[1,1]/tab[1,3]
-  ppv.ci <- emptylist
-  if (tab[1,3] > 0) ppv.ci <- method.fun(tab[1,1], tab[1,3], 1-alpha)
+  ppv.ci <- if (tab[1,3] > 0) method.fun(tab[1,1], tab[1,3], 1-alpha) else emptylist
   ppv <- c(ppv.est,unlist(modifyList(emptylist, ppv.ci)))
   names(ppv) <- c("est","se","lcl","ucl")
   npv.est <- tab[2,2]/tab[2,3]
-  npv.ci <- emptylist
-  if (tab[2,3] > 0) npv.ci <- method.fun(tab[2,2], tab[2,3], 1-alpha)
+  npv.ci <- if (tab[2,3] > 0) method.fun(tab[2,2], tab[2,3], 1-alpha) else emptylist
   npv <- c(npv.est,unlist(modifyList(emptylist, npv.ci)))
   names(npv) <- c("est","se","lcl","ucl")
   # diagnostic likelihood ratios
@@ -127,9 +123,11 @@ acc.1test <-  function(tab, alpha, testname, method, ...) {
   names(ndlr) <- c("est","se.ln","lcl","ucl")
   # results
   results <- list(tab, sensitivity, specificity,
-                  ppv, npv, pdlr, ndlr, alpha, testname)
+                  ppv, npv, pdlr, ndlr, alpha, testname, 
+                  method)
   names(results) <- c("tab", "sensitivity", "specificity",
-                      "ppv", "npv", "pdlr", "ndlr", "alpha", "testname")    
+                      "ppv", "npv", "pdlr", "ndlr", "alpha", "testname", 
+                      "method")    
   class(results) <- "acc.1test"
   return(results)
 }
