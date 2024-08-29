@@ -78,32 +78,32 @@ read.tab.1test <-  function(a, b, c, d, testname, ...) {
 # --------------------------------------------------------
 # acc.1test
 # --------------------------------------------------------
-acc.1test <-  function(tab, alpha, testname, method, ...) {
+acc.1test <-  function(tab, alpha, testname, method.ci, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
   if (!(inherits(x=tab, what="tab.1test", which=F))) stop("Table must be of class 'tab.1test'")
   if (missing(testname)) testname <- tab$testname
-  if (missing(method)) method <- "waldci"
-  method.fun <- match.fun(method)
+  if (missing(method.ci)) method.ci <- "waldci"
+  method.ci.fun <- match.fun(method.ci)
   tab <- tab[[1]]
   if (missing(alpha)) alpha <- 0.05
-  emptylist <- list(stderr = NA, conf.int = c(NA, NA))
+  emptylist <- list(stderr=NA, conf.int=c(NA, NA))
   # sensitivity and specificity
   sens.est <- tab[1,1]/tab[3,1]
-  sens.ci <- if (tab[3,1] > 0) method.fun(tab[1,1], tab[3,1], 1-alpha) else emptylist
+  sens.ci <- if (tab[3,1]>0) method.ci.fun(tab[1,1], tab[3,1], 1-alpha) else emptylist
   sensitivity <- c(sens.est,unlist(modifyList(emptylist, sens.ci)))
   names(sensitivity) <- c("est","se","lcl","ucl")
   spec.est <- tab[2,2]/tab[3,2]
-  spec.ci <- if (tab[3,2] > 0) method.fun(tab[2,2], tab[3,2], 1-alpha) else emptylist
+  spec.ci <- if (tab[3,2]>0) method.ci.fun(tab[2,2], tab[3,2], 1-alpha) else emptylist
   specificity <- c(spec.est,unlist(modifyList(emptylist, spec.ci)))
   names(specificity) <- c("est","se","lcl","ucl")
   # predictive values
   ppv.est <- tab[1,1]/tab[1,3]
-  ppv.ci <- if (tab[1,3] > 0) method.fun(tab[1,1], tab[1,3], 1-alpha) else emptylist
+  ppv.ci <- if (tab[1,3]>0) method.ci.fun(tab[1,1], tab[1,3], 1-alpha) else emptylist
   ppv <- c(ppv.est,unlist(modifyList(emptylist, ppv.ci)))
   names(ppv) <- c("est","se","lcl","ucl")
   npv.est <- tab[2,2]/tab[2,3]
-  npv.ci <- if (tab[2,3] > 0) method.fun(tab[2,2], tab[2,3], 1-alpha) else emptylist
+  npv.ci <- if (tab[2,3]>0) method.ci.fun(tab[2,2], tab[2,3], 1-alpha) else emptylist
   npv <- c(npv.est,unlist(modifyList(emptylist, npv.ci)))
   names(npv) <- c("est","se","lcl","ucl")
   # diagnostic likelihood ratios
@@ -292,7 +292,7 @@ generate.paired <- function(tab, ...) {
 # --------------------------------------------------------
 # acc.paired
 # --------------------------------------------------------
-acc.paired <-  function(tab, alpha, method, ...) {
+acc.paired <-  function(tab, alpha, method.ci, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
   if (!(inherits(x=tab, what="tab.paired", which=F))) stop("Table must be of class 'tab.paired'")
@@ -305,8 +305,8 @@ acc.paired <-  function(tab, alpha, method, ...) {
                           tab$diseased[2,3], tab$non.diseased[2,3], 
                           testname=tab$testnames[2])
   # accuracy of each test
-  acc.test1 <- acc.1test(tab = test1, alpha = alpha, method = method)
-  acc.test2 <- acc.1test(tab = test2, alpha = alpha, method = method)
+  acc.test1 <- acc.1test(tab = test1, alpha = alpha, method.ci = method.ci)
+  acc.test2 <- acc.1test(tab = test2, alpha = alpha, method.ci = method.ci)
   # results
   results <- list(acc.test1, acc.test2)
   names(results) <- c("Test1","Test2")
