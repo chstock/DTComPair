@@ -305,8 +305,8 @@ acc.paired <-  function(tab, alpha, method, ...) {
                           tab$diseased[2,3], tab$non.diseased[2,3], 
                           testname=tab$testnames[2])
   # accuracy of each test
-  acc.test1 <- acc.1test(test1, alpha = alpha, method = method)
-  acc.test2 <- acc.1test(test2, alpha = alpha, method = method)
+  acc.test1 <- acc.1test(tab = test1, alpha = alpha, method = method)
+  acc.test2 <- acc.1test(tab = test2, alpha = alpha, method = method)
   # results
   results <- list(acc.test1, acc.test2)
   names(results) <- c("Test1","Test2")
