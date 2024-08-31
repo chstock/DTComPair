@@ -12,13 +12,23 @@ acc.1test(tab, alpha, testname, ...)
   }
   \item{alpha}{Significance level alpha for 100(1-alpha)\%-confidence intervals, the default is 0.05.
   }
-  \item{testname}{A character variable containing the name of the diagnostic test. 
+  \item{testname}{A character string containing the name of the diagnostic test. 
+  }
+  \item{method.ci}{A function used to compute the confidence intervals for sensitivity, specificity, and predictive values. The default is \code{waldci} for Wald's asymptotic normal-based confidence intervals. See 'Details'. 
   }
   \item{\dots}{Additional arguments (usually not required).
   }
 }
 \details{
-The calculation of accuracy measures and their variances follows standard methodology, e.g. described in Pepe (2003) or Zhou et al. (2011). Confidence intervals for diagnostic likelihood ratios are computed according to Simel et al. (1991).
+The calculation of accuracy measures follows standard methodology, e.g. described in Pepe (2003) or Zhou et al. (2011). 
+
+The confidence intervals for sensitivity, specificity, and predictive values are computed using the methodology implemented in the function passed to the argument \code{method.ci}. 
+
+Available options are: (1) \code{waldci} (Wald's asymptotic normal-based CI; the default), (2) \code{logitci} (asymptotic normal-based CI on the logit scale and then back transformed), (3) \code{proflikci} (profile likelihood CI), (4) \code{exactci} (Clopper-Pearson's exact CI); (5) \code{add4cici} (Agresti-Coull's add-4 CI), (6) \code{addz2ci} (Agresti-Coull's add-z^2/2 CI), (7) \code{blakerci} (Blaker's exact CI), (8) \code{scoreci} (Wilson's score CI), (9) \code{midPci} (mid-P CI). Options (3) to (9) are based on the homonymous functions from the \code{{PropCIs}} package.
+
+Alternatively, the user can specify a custom function which must have these arguments: \code{x} (nominator of the proportion), \code{n} (denominator of the proportion), and \code{conf.level} (the confidence level of the CI). The function must return a named list with these components: \code{stderr} (a scalar with the standard error, if applicable), \code{conf.int} (a length-2 numeric vector with the bounds of the CI), \code{method} (a character string indicating the type of CI computed).
+
+Confidence intervals for diagnostic likelihood ratios are computed according to Simel et al. (1991).
 }
 \value{A list of class \code{\link{acc.1test}}:
 \item{tab}{A contingency table (matrix) of test results; the same \code{tab} that is supplied as an argument. 
@@ -36,7 +46,9 @@ The calculation of accuracy measures and their variances follows standard method
 \item{pdlr }{A numeric vector containing the estimated positive diagnostic likelihood ratio (\code{est}), the standard error of the logarithm of the positive diagnostic likelihood ratio (\code{se.ln}), the lower confidence limit (\code{lcl}) and the upper confidence limit (\code{ucl}).}
 \item{ndlr }{A numeric vector containing the estimated negative diagnostic likelihood ratio (\code{est}), the standard error of the logarithm of the negative diagnostic likelihood ratio (\code{se.ln}), the lower confidence limit (\code{lcl}) and the upper confidence limit (\code{ucl}).}
 \item{alpha }{The significance level alpha used to compute 100(1-alpha)\%-confidence intervals, the default is 0.05.}
-\item{testname }{A character variable containing the name of the diagnostic test. }
+\item{testname }{A character string containing the name of the diagnostic test. }
+\item{method.ci }{A character string describing the method used to compute the confidence intervals for sensitivity, specificity, and predictive values.}
+
 }
 
 \references{
@@ -59,4 +71,6 @@ data(Paired1) # Hypothetical study data
 a1 <- tab.1test(d=d, y=y1, data=Paired1)
 a2 <- acc.1test(a1)
 print(a2)
+a3 <- acc.1test(a1, method=exactci, conf.level=0.99)
+print(a3)
 }

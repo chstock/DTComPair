@@ -11,6 +11,8 @@ acc.paired(tab, alpha, ...)
 }
   \item{alpha}{Significance level alpha for 100(1-alpha)\%-confidence intervals, the default is 0.05.
 }
+\item{method.ci}{A function used to compute the confidence intervals for sensitivity, specificity, and predictive values. The default is \code{waldci} for Wald's asymptotic normal-based confidence intervals.  See \code{\link{acc.1test}}. 
+  }
   \item{\dots}{Additional arguments, usually not required.
 }
 }
@@ -18,7 +20,7 @@ acc.paired(tab, alpha, ...)
 The calculation of accuracy measures and their variances follows standard methodology, e.g. described in Pepe (2003) or Zhou et al. (2011).
 }
 
-\value{An list of class \code{\link{acc.paired}}:
+\value{A list of class \code{\link{acc.paired}}:
 \item{Test1}{A list of class \code{\link{acc.1test}} containing results and accuracy estimates of Test 1.}
 \item{Test2}{A list of class \code{\link{acc.1test}} containing results and accuracy estimates of Test 2.}
 }
