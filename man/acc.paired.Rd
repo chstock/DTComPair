@@ -4,7 +4,7 @@
 \description{
 Sensitivity and specificity, (positive and negative) predictive values and (positive and negative) diagnostic likelihood ratios of a two binary diagnostic tests in a paired study design.}
 \usage{
-acc.paired(tab, alpha, ...)
+acc.paired(tab, alpha, method.ci, ...)
 }
 \arguments{
   \item{tab}{An object of class \code{\link{tab.paired}}.
@@ -17,12 +17,16 @@ acc.paired(tab, alpha, ...)
 }
 }
 \details{
-The calculation of accuracy measures and their variances follows standard methodology, e.g. described in Pepe (2003) or Zhou et al. (2011).
+The calculation of accuracy measures follows standard methodology, e.g. described in Pepe (2003) or Zhou et al. (2011).
+
+The confidence intervals for sensitivity, specificity, and predictive values are computed using the methodology implemented in the function passed to the argument \code{method.ci}.
+
+Confidence intervals for diagnostic likelihood ratios are computed according to Simel et al. (1991).
 }
 
 \value{A list of class \code{\link{acc.paired}}:
-\item{Test1}{A list of class \code{\link{acc.1test}} containing results and accuracy estimates of Test 1.}
-\item{Test2}{A list of class \code{\link{acc.1test}} containing results and accuracy estimates of Test 2.}
+\item{Test1 }{A list of class \code{\link{acc.1test}} containing results and accuracy estimates of Test 1.}
+\item{Test2 }{A list of class \code{\link{acc.1test}} containing results and accuracy estimates of Test 2.}
 }
 
 \references{

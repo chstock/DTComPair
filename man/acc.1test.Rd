@@ -5,7 +5,7 @@
 Sensitivity and specificity, (positive and negative) predictive values and (positive and negative) diagnostic likelihood ratios of a single binary diagnostic test.}
 
 \usage{
-acc.1test(tab, alpha, testname, ...)
+acc.1test(tab, alpha, testname, method.ci, ...)
 }
 \arguments{
   \item{tab}{An object of class \code{\link{tab.1test}}.
