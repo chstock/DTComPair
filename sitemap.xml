@@ -1,96 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://chstock.github.io/DTComPair/404.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/index.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/DLR.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/Paired1.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/acc.1test.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/acc.paired.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/dlr.regtest.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/ellipse.pv.rpv.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/generate.paired.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/print.acc.1test.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/print.acc.paired.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/print.tab.1test.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/print.tab.paired.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/pv.gs.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/pv.prev.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/pv.rpv.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/pv.wgs.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/read.tab.1test.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/read.tab.paired.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/represent.long.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/sesp.diff.ci.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/sesp.exactbinom.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/sesp.gen.mcnemar.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/sesp.mcnemar.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/sesp.rel.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/tab.1test.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/tab.paired.html</loc>
-  </url>
-  <url>
-    <loc>https://chstock.github.io/DTComPair/reference/tpffpf.rel.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://chstock.github.io/DTComPair/404.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/authors.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/index.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/news/index.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/DLR.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/Paired1.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/acc.1test.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/acc.paired.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/dlr.regtest.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/ellipse.pv.rpv.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/generate.paired.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/index.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/print.acc.1test.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/print.acc.paired.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/print.tab.1test.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/print.tab.paired.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/pv.gs.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/pv.prev.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/pv.rpv.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/pv.wgs.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/read.tab.1test.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/read.tab.paired.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/represent.long.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/sesp.diff.ci.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/sesp.exactbinom.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/sesp.gen.mcnemar.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/sesp.mcnemar.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/sesp.rel.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/tab.1test.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/tab.paired.html</loc></url>
+<url><loc>https://chstock.github.io/DTComPair/reference/tpffpf.rel.html</loc></url>
 </urlset>
+
