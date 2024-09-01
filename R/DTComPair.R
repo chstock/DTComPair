@@ -78,46 +78,33 @@ read.tab.1test <-  function(a, b, c, d, testname, ...) {
 # --------------------------------------------------------
 # acc.1test
 # --------------------------------------------------------
-acc.1test <-  function(tab, alpha, testname, ...) {
+acc.1test <-  function(tab, alpha, testname, method.ci, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
   if (!(inherits(x=tab, what="tab.1test", which=F))) stop("Table must be of class 'tab.1test'")
   if (missing(testname)) testname <- tab$testname
+  if (missing(method.ci)) method.ci <- "waldci"
+  method.ci.fun <- match.fun(method.ci)
   tab <- tab[[1]]
   if (missing(alpha)) alpha <- 0.05
+  emptylist <- list(stderr=NA, conf.int=c(NA, NA))
   # sensitivity and specificity
   sens.est <- tab[1,1]/tab[3,1]
-  sens.se <- sqrt((tab[1,1]*tab[2,1])/(tab[3,1]^3))
-  sens.lcl <- sens.est-qnorm(1-alpha/2)*sens.se
-    if (sens.lcl<0) sens.lcl <- 0
-  sens.ucl <- sens.est+qnorm(1-alpha/2)*sens.se
-    if (sens.ucl>1) sens.ucl <- 1
-  sensitivity <- c(sens.est,sens.se,sens.lcl,sens.ucl)
+  sens.ci <- if (tab[3,1]>0) method.ci.fun(tab[1,1], tab[3,1], 1-alpha) else emptylist
+  sensitivity <- c(sens.est,unlist(modifyList(emptylist, sens.ci[c("stderr", "conf.int")])))
   names(sensitivity) <- c("est","se","lcl","ucl")
   spec.est <- tab[2,2]/tab[3,2]
-  spec.se <- sqrt((tab[1,2]*tab[2,2])/(tab[3,2]^3))
-  spec.lcl <- spec.est-qnorm(1-alpha/2)*spec.se
-    if (spec.lcl<0) spec.lcl <- 0
-  spec.ucl <- spec.est+qnorm(1-alpha/2)*spec.se 
-    if (spec.ucl>1) spec.ucl <- 1
-  specificity <- c(spec.est,spec.se,spec.lcl,spec.ucl)
+  spec.ci <- if (tab[3,2]>0) method.ci.fun(tab[2,2], tab[3,2], 1-alpha) else emptylist
+  specificity <- c(spec.est,unlist(modifyList(emptylist, spec.ci[c("stderr", "conf.int")])))
   names(specificity) <- c("est","se","lcl","ucl")
   # predictive values
   ppv.est <- tab[1,1]/tab[1,3]
-  ppv.se <- sqrt((tab[1,1]*tab[1,2])/(tab[1,3]^3))
-  ppv.lcl <- ppv.est-qnorm(1-alpha/2)*ppv.se
-    if (ppv.lcl<0) ppv.lcl <- 0
-  ppv.ucl <- ppv.est+qnorm(1-alpha/2)*ppv.se
-    if (ppv.ucl>1) ppv.ucl <- 1
-  ppv <- c(ppv.est,ppv.se,ppv.lcl,ppv.ucl)
+  ppv.ci <- if (tab[1,3]>0) method.ci.fun(tab[1,1], tab[1,3], 1-alpha) else emptylist
+  ppv <- c(ppv.est,unlist(modifyList(emptylist, ppv.ci[c("stderr", "conf.int")])))
   names(ppv) <- c("est","se","lcl","ucl")
   npv.est <- tab[2,2]/tab[2,3]
-  npv.se <- sqrt((tab[2,1]*tab[2,2])/(tab[2,3]^3))
-  npv.lcl <- npv.est-qnorm(1-alpha/2)*npv.se
-    if (npv.lcl<0) npv.lcl <- 0
-  npv.ucl <- npv.est+qnorm(1-alpha/2)*npv.se
-    if (npv.ucl>1) npv.ucl <- 1
-  npv <- c(npv.est,npv.se,npv.lcl,npv.ucl)
+  npv.ci <- if (tab[2,3]>0) method.ci.fun(tab[2,2], tab[2,3], 1-alpha) else emptylist
+  npv <- c(npv.est,unlist(modifyList(emptylist, npv.ci[c("stderr", "conf.int")])))
   names(npv) <- c("est","se","lcl","ucl")
   # diagnostic likelihood ratios
   pdlr.est <- sens.est/(1-spec.est)
@@ -135,17 +122,18 @@ acc.1test <-  function(tab, alpha, testname, ...) {
   ndlr <- c(ndlr.est,ndlr.se.log,ndlr.lcl,ndlr.ucl)
   names(ndlr) <- c("est","se.ln","lcl","ucl")
   # results
+  method.ci.string <- Find(Negate(is.null), c(sens.ci$method, spec.ci$method, ppv.ci$method, npv.ci$method))
   results <- list(tab, sensitivity, specificity,
-                  ppv, npv, pdlr, ndlr, alpha, testname)
+                  ppv, npv, pdlr, ndlr, alpha, testname, method.ci.string)
   names(results) <- c("tab", "sensitivity", "specificity",
-                      "ppv", "npv", "pdlr", "ndlr", "alpha", "testname")    
+                      "ppv", "npv", "pdlr", "ndlr", "alpha", "testname", "method.ci")    
   class(results) <- "acc.1test"
   return(results)
 }
 
 print.acc.1test <- function(x,...) {
   cat(paste("Diagnostic accuracy of test '",x$testname,"'\n",sep=''))
-  cat(paste("\n(Estimates, standard errors and ",
+  cat(paste("\n(Estimates, standard errors and ", x$method.ci, " ",
             100*(1-x$alpha),
             "%-confidence intervals)\n\n",sep=""))
   acc.mat1 <- matrix(data=c(x$sensitivity[1:4],
@@ -305,11 +293,12 @@ generate.paired <- function(tab, ...) {
 # --------------------------------------------------------
 # acc.paired
 # --------------------------------------------------------
-acc.paired <-  function(tab, alpha, ...) {
+acc.paired <-  function(tab, alpha, method.ci, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
   if (!(inherits(x=tab, what="tab.paired", which=F))) stop("Table must be of class 'tab.paired'")
   if (missing(alpha)) alpha <- 0.05
+  if (missing(method.ci)) method.ci <- "waldci"
   # tables for each test
   test1 <- read.tab.1test(tab$diseased[3,1], tab$non.diseased[3,1],
                           tab$diseased[3,2], tab$non.diseased[3,2], 
@@ -318,8 +307,8 @@ acc.paired <-  function(tab, alpha, ...) {
                           tab$diseased[2,3], tab$non.diseased[2,3], 
                           testname=tab$testnames[2])
   # accuracy of each test
-  acc.test1 <- acc.1test(test1)
-  acc.test2 <- acc.1test(test2)
+  acc.test1 <- acc.1test(tab = test1, alpha = alpha, method.ci = method.ci)
+  acc.test2 <- acc.1test(tab = test2, alpha = alpha, method.ci = method.ci)
   # results
   results <- list(acc.test1, acc.test2)
   names(results) <- c("Test1","Test2")
