@@ -24,9 +24,9 @@ The calculation of accuracy measures follows standard methodology, e.g. describe
 
 The confidence intervals for sensitivity, specificity, and predictive values are computed using the methodology implemented in the function passed to the argument \code{method.ci}. 
 
-Available options are: (1) \code{waldci} (Wald's asymptotic normal-based CI; the default), (2) \code{logitci} (asymptotic normal-based CI on the logit scale and then back transformed), (3) \code{proflikci} (profile likelihood CI), (4) \code{exactci} (Clopper-Pearson's exact CI); (5) \code{add4cici} (Agresti-Coull's add-4 CI), (6) \code{addz2ci} (Agresti-Coull's add-z^2/2 CI), (7) \code{blakerci} (Blaker's exact CI), (8) \code{scoreci} (Wilson's score CI), (9) \code{midPci} (mid-P CI). Options (3) to (9) are based on the homonymous functions from the \code{{PropCIs}} package.
+Available options are: (1) \code{waldci} (Wald's asymptotic normal-based CI; the default), (2) \code{logitci} (asymptotic normal-based CI on the logit scale and then back transformed), (3) \code{proflikci} (profile likelihood CI), (4) \code{exactci} (Clopper-Pearson's exact CI); (5) \code{add4cici} (Agresti-Coull's add-4 CI), (6) \code{addz2ci} (Agresti-Coull's add-z^2/2 CI), (7) \code{blakerci} (Blaker's exact CI), (8) \code{scoreci} (Wilson's score CI), (9) \code{midPci} (mid-P CI). Options (3) to (9) are based on the homonymous functions from the  \code{{PropCIs}} package.
 
-Alternatively, the user can specify a custom function which must have these arguments: \code{x} (nominator of the proportion), \code{n} (denominator of the proportion), and \code{conf.level} (the confidence level of the CI). The function must return a named list with these components: \code{stderr} (a scalar with the standard error, if applicable), \code{conf.int} (a length-2 numeric vector with the bounds of the CI), \code{method} (a character string indicating the type of CI computed).
+Alternatively, the user can specify a custom function that implements the desired method. Run \code{DTComPair:::logitci}  to see an example of how to write a custom function in terms of arguments and returned object.
 
 Confidence intervals for diagnostic likelihood ratios are computed according to Simel et al. (1991).
 }
