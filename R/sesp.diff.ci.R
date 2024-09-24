@@ -2,6 +2,7 @@
 # --------------------------------------------------------
 # sesp.diff.ci
 # --------------------------------------------------------
+#' @export
 sesp.diff.ci <- function(tab, ci.method, alpha, cont.corr) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -73,14 +74,14 @@ sesp.diff.ci <- function(tab, ci.method, alpha, cont.corr) {
   if (ci.method == "tango") {
     # sensitivity    
     b <- tab$diseased[1,2]; c <- tab$diseased[2,1]; n <- tab$diseased[3,3]
-    tango <- scoreci.mp(b, c, n, conf.level=1-alpha)    
+    tango <- PropCIs::scoreci.mp(b, c, n, conf.level=1-alpha)    
     sens.diff.se <- NA    
     sens.diff.cl <- sort(c(tango$conf.int[1], tango$conf.int[2]))
     if ( (tango$conf.int[1] > sens.diff) | (tango$conf.int[2] < sens.diff))
       sens.diff.cl <- sort(-1*sens.diff.cl)
     # specificity
     b <- tab$non.diseased[1,2]; c <- tab$non.diseased[2,1]; n <- tab$non.diseased[3,3]
-    tango <- scoreci.mp(b, c, n, conf.level=1-alpha)    
+    tango <- PropCIs::scoreci.mp(b, c, n, conf.level=1-alpha)    
     spec.diff.se <- NA    
     spec.diff.cl <- sort(c(tango$conf.int[1], tango$conf.int[2]))
     if ( (tango$conf.int[1] > spec.diff) | (tango$conf.int[2] < spec.diff))
