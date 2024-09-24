@@ -86,9 +86,3 @@ pv.rpv(b1)
 ```
 
 
-## Citing `DTComPair`
-
-
-```{r citation}
-citation("DTComPair")
-```

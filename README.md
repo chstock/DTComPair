@@ -14,7 +14,7 @@ status](https://www.r-pkg.org/badges/version/DTComPair)](https://CRAN.R-project.
 <!-- badges: end -->
 
 Comparison of the accuracy of two binary diagnostic tests in a “paired”
-study design, i.e. when each test is applied to each subject in the
+study design, i.e. when each test is applied to each subject in the
 study.
 
 ## Installation
@@ -64,7 +64,7 @@ print(a1)
 ```
 
 ``` r
-a1 |> acc.1test(method.ci = waldci) # default Wald interval
+a1 |> acc.1test(method.ci = "waldci") # default Wald interval
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
@@ -81,16 +81,16 @@ a1 |> acc.1test(method.ci = waldci) # default Wald interval
 ```
 
 ``` r
-a1 |> acc.1test(method.ci = exactci) # Wilson score interval
+a1 |> acc.1test(method.ci = "exactci") # Wilson score interval
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
 # 
-#                  Est.         SE  Lower CL  Upper CL
-# Sensitivity 0.8802661 0.01528718 0.8503038 0.9102284
-# Specificity 0.6781609 0.02891782 0.6214830 0.7348388
-# PPV         0.8253638 0.01731081 0.7914353 0.8592924
-# NPV         0.7662338 0.02784617 0.7116563 0.8208113
+#                  Est. SE  Lower CL  Upper CL
+# Sensitivity 0.8802661 NA 0.8466745 0.9087592
+# Specificity 0.6781609 NA 0.6177792 0.7344406
+# PPV         0.8253638 NA 0.7884240 0.8582440
+# NPV         0.7662338 NA 0.7062587 0.8192389
 # 
 #            Est.  SE (log)  Lower CL  Upper CL
 # PDLR  2.7351124 0.0915147 2.2860079 3.2724472
@@ -123,16 +123,16 @@ print(b1)
 ```
 
 ``` r
-b1 |> acc.paired(method.ci = scoreci)
+b1 |> acc.paired(method.ci = "scoreci")
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
 # 
-#                  Est.         SE  Lower CL  Upper CL
-# Sensitivity 0.8802661 0.01528718 0.8503038 0.9102284
-# Specificity 0.6781609 0.02891782 0.6214830 0.7348388
-# PPV         0.8253638 0.01731081 0.7914353 0.8592924
-# NPV         0.7662338 0.02784617 0.7116563 0.8208113
+#                  Est. SE Lower CL Upper CL
+# Sensitivity 0.8802661 NA   0.8470   0.9071
+# Specificity 0.6781609 NA   0.6193   0.7319
+# PPV         0.8253638 NA   0.7889   0.8567
+# NPV         0.7662338 NA   0.7076   0.8162
 # 
 #            Est.  SE (log)  Lower CL  Upper CL
 # PDLR  2.7351124 0.0915147 2.2860079 3.2724472
@@ -143,11 +143,11 @@ b1 |> acc.paired(method.ci = scoreci)
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
 # 
-#                  Est.         SE  Lower CL  Upper CL
-# Sensitivity 0.7560976 0.02022128 0.7164646 0.7957305
-# Specificity 0.7969349 0.02490054 0.7481307 0.8457390
-# PPV         0.8654822 0.01718980 0.8317908 0.8991736
-# NPV         0.6540881 0.02667395 0.6018081 0.7063680
+#                  Est. SE Lower CL Upper CL
+# Sensitivity 0.7560976 NA   0.7144   0.7935
+# Specificity 0.7969349 NA   0.7440   0.8413
+# PPV         0.8654822 NA   0.8282   0.8957
+# NPV         0.6540881 NA   0.6002   0.7042
 # 
 #            Est.  SE (log)  Lower CL  Upper CL
 # PDLR  3.7234238 0.1255060 2.9114648 4.7618247
@@ -198,25 +198,4 @@ pv.rpv(b1)
 # 
 # $alpha
 # [1] 0.05
-```
-
-## Citing `DTComPair`
-
-``` r
-citation("DTComPair")
-# To cite DTComPair in publications use:
-# 
-#   Stock C, Hielscher T, Discacciati A (2024). DTComPair: comparison of
-#   binary diagnostic tests in a paired study design. R package, version
-#   1.2.4. URL: https://CRAN.R-project.org/package=DTComPair.
-# 
-# A BibTeX entry for LaTeX users is
-# 
-#   @Misc{,
-#     title = {{DTComPair}: comparison of binary diagnostic tests in a paired study design},
-#     author = {Christian Stock and Thomas Hielscher and Andrea Discacciati},
-#     year = {2024},
-#     note = {{R} package, version 1.2.4. {URL}: {https://CRAN.R-project.org/package=DTComPair}.},
-#     encoding = {UTF-8},
-#   }
 ```
