@@ -3,6 +3,7 @@
 # --------------------------------------------------------
 # dlr.regtest
 # --------------------------------------------------------
+#' @export
 dlr.regtest <- function(tab,alpha) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")

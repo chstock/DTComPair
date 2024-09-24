@@ -35,6 +35,7 @@
 #' @references Alonzo, T. A., Pepe, M. S., & Moskowitz, C. S. (2002). Sample size calculations for comparative studies of medical tests for detecting presence of disease. \emph{Statistics in medicine}, 21(6), 835-852.
 #' 
 #' @seealso \code{sesp.diff.ci}, \code{sesp.mcnemar}, and \code{sesp.exactbinom}.
+#' @export
 #' 
 #' @examples
 #' data(Paired1) # Hypothetical study data

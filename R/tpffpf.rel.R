@@ -50,6 +50,7 @@
 #' Alonzo, T. A., Pepe, M. S., & Moskowitz, C. S. (2002). Sample size calculations for comparative studies of medical tests for detecting presence of disease. \emph{Statistics in medicine}, 21(6), 835-852.
 #' 
 #' @seealso \code{sesp.rel}.
+#' @export
 #' 
 #' @examples
 #' # Data from Cheng and Macaluso (Table 2)

@@ -1,13 +1,13 @@
 # --------------------------------------------------------
 # Description: Functions for DTComPair-package
-# Author: C. Stock and A. Discacciati 
-# Last modified: 7 May 2023
+# Authors: C. Stock and A. Discacciati 
 # --------------------------------------------------------
 
 
 # --------------------------------------------------------
 # tab.1test
 # --------------------------------------------------------
+#' @export
 tab.1test <-  function(d, y, data=NULL, testname, ...) {
   # check arguments
   if (missing(d)) stop("Disease status (d) is missing.")
@@ -46,6 +46,7 @@ tab.1test <-  function(d, y, data=NULL, testname, ...) {
   return(results)
 }
 
+#' @exportS3Method print tab.1test
 print.tab.1test <- function(x,...) {
   cat(paste("Binary diagnostic test '",x$testname,"'\n\n",sep=''))
   colnames(x$tab.1test)[2] <- "Non-diseased"
@@ -56,6 +57,7 @@ print.tab.1test <- function(x,...) {
 # --------------------------------------------------------
 # read.tab.1test
 # --------------------------------------------------------
+#' @export
 read.tab.1test <-  function(a, b, c, d, testname, ...) {
   if (missing(testname)) testname <- "Noname"
   tab.1t <- matrix(rep(0,9), nrow=3, 
@@ -78,40 +80,138 @@ read.tab.1test <-  function(a, b, c, d, testname, ...) {
 # --------------------------------------------------------
 # acc.1test
 # --------------------------------------------------------
-acc.1test <-  function(tab, alpha, testname, method.ci, ...) {
+#' @export
+acc.1test <- function(tab, alpha, testname, method.ci, ...) {
+  
   # check arguments
+  
   if (missing(tab)) stop("Table is missing.")
   if (!(inherits(x=tab, what="tab.1test", which=F))) stop("Table must be of class 'tab.1test'")
   if (missing(testname)) testname <- tab$testname
   if (missing(method.ci)) method.ci <- "waldci"
-  method.ci.fun <- match.fun(method.ci)
+  assert_that(
+    method.ci %in% c(
+      "waldci",
+      "logitci",
+      "exactci",
+      "add4ci",
+      "addz2ci",
+      "blakerci",
+      "scoreci",
+      "midPci"
+    )
+  )
+  
+  # Functions to compute confidence intervals (not contained in PropCIs package)
+  
+  waldci <- function(x, n, conf.level){
+    stopifnot(n > 0, x <= n, conf.level > 0, conf.level < 1)
+    alpha <- 1-conf.level
+    if (isTRUE(x > 0 & x < n)) {
+      stderr <- sqrt(x*(n-x)/n^3)
+      lowlim <- max(0, x/n - qnorm(alpha/2, lower.tail = FALSE) * stderr)
+      uplim <- min(x/n + qnorm(alpha/2, lower.tail = FALSE) * stderr, 1)  
+    } else if (isTRUE(x == 0)) { # if x/n is 0 -> rule of three and no stderr
+      stderr <- NA
+      lowlim <- 0
+      uplim <- -log(alpha)/n
+    } else if (isTRUE(x == n)) { # if x/n is 1 -> rule of three and no stderr
+      stderr <- NA
+      lowlim <- 1 + log(alpha)/n
+      uplim <- 1
+    }
+    cint <- c(lowlim, uplim)
+    attr(cint, "conf.level") <- conf.level
+    method <- "Wald's asymptotic normal-based"
+    rval <- list(stderr = stderr, conf.int = cint, method = method)
+    class(rval) <- "htest"
+    return(rval)
+  }
+  
+  logitci <- function(x, n, conf.level){
+    stopifnot(n > 0, x <= n, conf.level > 0, conf.level < 1)
+    alpha <- 1-conf.level
+    if (isTRUE(x > 0 & x < n)) {
+      stderr <- sqrt(n/(x*(n-x)))
+      lowlim <- stats::plogis(stats::qlogis(x/n) - qnorm(alpha/2, lower.tail = FALSE) * stderr)
+      uplim <-  stats::plogis(stats::qlogis(x/n) + qnorm(alpha/2, lower.tail = FALSE) * stderr)
+    } else { # no stderr and ci if x/n is 0 or 1
+      stderr <- uplim <- lowlim <- NA
+    }
+    cint <- c(lowlim, uplim)
+    attr(cint, "conf.level") <- conf.level
+    method <- "Logit asymptotic"
+    rval <- list(stderr = stderr, conf.int = cint, method = method)
+    class(rval) <- "htest"
+    return(rval)
+  }
+  
+  # Set confidence interval method
+  
+  method.ci.fun <- ifelse(
+    test = (method.ci %in% c("waldci", "logitci")),
+    yes = get(x = method.ci),
+    no = get(x = method.ci, envir = asNamespace("PropCIs"))
+    )
+  
+  # Compute accuracy measures
+  
   tab <- tab[[1]]
   if (missing(alpha)) alpha <- 0.05
   emptylist <- list(stderr=NA, conf.int=c(NA, NA))
   # sensitivity and specificity
   sens.est <- tab[1,1]/tab[3,1]
-  sens.ci <- if (tab[3,1]>0) method.ci.fun(tab[1,1], tab[3,1], 1-alpha) else emptylist
-  sensitivity <- c(sens.est,unlist(modifyList(emptylist, sens.ci[c("stderr", "conf.int")])))
+  sens.ci <- if (tab[3, 1] > 0)
+    do.call(method.ci.fun, list(
+      x = tab[1, 1],
+      n = tab[3, 1],
+      conf.level = 1 - alpha
+    ))
+  else
+    emptylist
+  sensitivity <- c(sens.est,unlist(utils::modifyList(emptylist, sens.ci[c("stderr", "conf.int")])))
   names(sensitivity) <- c("est","se","lcl","ucl")
   spec.est <- tab[2,2]/tab[3,2]
-  spec.ci <- if (tab[3,2]>0) method.ci.fun(tab[2,2], tab[3,2], 1-alpha) else emptylist
-  specificity <- c(spec.est,unlist(modifyList(emptylist, spec.ci[c("stderr", "conf.int")])))
+  spec.ci <- if (tab[3,2]>0) 
+    do.call(method.ci.fun, list(
+      x = tab[2, 2],
+      n = tab[3, 2],
+      conf.level = 1 - alpha
+    ))
+  else
+    emptylist
+  specificity <- c(spec.est,unlist(utils::modifyList(emptylist, spec.ci[c("stderr", "conf.int")])))
   names(specificity) <- c("est","se","lcl","ucl")
   # predictive values
   ppv.est <- tab[1,1]/tab[1,3]
-  ppv.ci <- if (tab[1,3]>0) method.ci.fun(tab[1,1], tab[1,3], 1-alpha) else emptylist
-  ppv <- c(ppv.est,unlist(modifyList(emptylist, ppv.ci[c("stderr", "conf.int")])))
+  ppv.ci <- if (tab[1,3]>0) 
+    do.call(method.ci.fun, list(
+      x = tab[1, 1],
+      n = tab[1, 3],
+      conf.level = 1 - alpha
+    ))
+  else
+    emptylist
+  ppv <- c(ppv.est,unlist(utils::modifyList(emptylist, ppv.ci[c("stderr", "conf.int")])))
   names(ppv) <- c("est","se","lcl","ucl")
   npv.est <- tab[2,2]/tab[2,3]
-  npv.ci <- if (tab[2,3]>0) method.ci.fun(tab[2,2], tab[2,3], 1-alpha) else emptylist
-  npv <- c(npv.est,unlist(modifyList(emptylist, npv.ci[c("stderr", "conf.int")])))
+  npv.ci <- if (tab[2,3]>0) 
+    do.call(method.ci.fun, list(
+      x = tab[2, 2],
+      n = tab[2, 3],
+      conf.level = 1 - alpha
+    ))
+  else
+    emptylist
+  npv <- c(npv.est,unlist(utils::modifyList(emptylist, npv.ci[c("stderr", "conf.int")])))
   names(npv) <- c("est","se","lcl","ucl")
-  # diagnostic likelihood ratios
-  pdlr.est <- sens.est/(1-spec.est)
-  pdlr.se.log <- sqrt(((1-sens.est)/(tab[1,1]))+
-                      (spec.est/tab[1,2]))
-  pdlr.lcl <- exp(log(pdlr.est)-qnorm(1-alpha/2)*pdlr.se.log)
-  pdlr.ucl <- exp(log(pdlr.est)+qnorm(1-alpha/2)*pdlr.se.log)
+  
+  # Diagnostic likelihood ratios
+  pdlr.est <- sens.est / (1 - spec.est)
+  pdlr.se.log <- sqrt(((1 - sens.est) / (tab[1, 1])) +
+                        (spec.est / tab[1, 2]))
+  pdlr.lcl <- exp(log(pdlr.est) - qnorm(1 - alpha / 2) * pdlr.se.log)
+  pdlr.ucl <- exp(log(pdlr.est) + qnorm(1 - alpha / 2) * pdlr.se.log)
   pdlr <- c(pdlr.est,pdlr.se.log,pdlr.lcl,pdlr.ucl)
   names(pdlr) <- c("est","se.ln","lcl","ucl")
   ndlr.est <- (1-sens.est)/spec.est
@@ -121,43 +221,68 @@ acc.1test <-  function(tab, alpha, testname, method.ci, ...) {
   ndlr.ucl <- exp(log(ndlr.est)+qnorm(1-alpha/2)*ndlr.se.log)
   ndlr <- c(ndlr.est,ndlr.se.log,ndlr.lcl,ndlr.ucl)
   names(ndlr) <- c("est","se.ln","lcl","ucl")
-  # results
-  method.ci.string <- Find(Negate(is.null), c(sens.ci$method, spec.ci$method, ppv.ci$method, npv.ci$method))
-  results <- list(tab, sensitivity, specificity,
-                  ppv, npv, pdlr, ndlr, alpha, testname, method.ci.string)
-  names(results) <- c("tab", "sensitivity", "specificity",
-                      "ppv", "npv", "pdlr", "ndlr", "alpha", "testname", "method.ci")    
+  
+  # Collate and return results
+
+  results <- list(
+    "tab" = tab,
+    "sensitivity" = sensitivity,
+    "specificity" = specificity,
+    "ppv" = ppv,
+    "npv" = npv,
+    "pdlr" = pdlr,
+    "ndlr" = ndlr,
+    "alpha" = alpha,
+    "testname" = testname,
+    "method.ci" = as.character(substitute(method.ci))
+  )
   class(results) <- "acc.1test"
   return(results)
+  
 }
 
-print.acc.1test <- function(x,...) {
-  cat(paste("Diagnostic accuracy of test '",x$testname,"'\n",sep=''))
-  cat(paste("\n(Estimates, standard errors and ", x$method.ci, " ",
-            100*(1-x$alpha),
-            "%-confidence intervals)\n\n",sep=""))
-  acc.mat1 <- matrix(data=c(x$sensitivity[1:4],
-                            x$specificity[1:4],
-                            x$ppv[1:4], x$npv[1:4]), 
-                     nrow=4, ncol=4, byrow=TRUE,
-                     dimnames = list(c("Sensitivity", "Specificity",
-                                       "PPV", "NPV"),
-                                     c("Est.", "SE", 
-                                       "Lower CL", "Upper CL")))  
+
+#' @exportS3Method print acc.1test
+print.acc.1test <- function(x, ...) {
+  cat(paste("Diagnostic accuracy of test '", x$testname, "'\n", sep = ''))
+  cat(
+    paste(
+      "\n(Estimates, standard errors and ",
+      100 * (1 - x$alpha),
+      "%-confidence intervals)\n\n",
+      sep = ""
+    )
+  )
+  acc.mat1 <- matrix(
+    data = c(x$sensitivity[1:4],
+             x$specificity[1:4],
+             x$ppv[1:4], x$npv[1:4]),
+    nrow = 4,
+    ncol = 4,
+    byrow = TRUE,
+    dimnames = list(
+      c("Sensitivity", "Specificity", "PPV", "NPV"),
+      c("Est.", "SE", "Lower CL", "Upper CL")
+    )
+  )
   print(acc.mat1)
   cat("\n")
-  acc.mat2 <- matrix(data=c(x$pdlr[1:4],x$ndlr[1:4]), 
-                     nrow=2, ncol=4, byrow=TRUE,
-                     dimnames = list(c("PDLR ","NDLR "),
-                                     c("Est.", "SE (log)", 
-                                       "Lower CL", "Upper CL")))
-  print(acc.mat2)   
+  acc.mat2 <- matrix(
+    data = c(x$pdlr[1:4], x$ndlr[1:4]),
+    nrow = 2,
+    ncol = 4,
+    byrow = TRUE,
+    dimnames = list(c("PDLR ", "NDLR "),
+                    c("Est.", "SE (log)", "Lower CL", "Upper CL"))
+  )
+  print(acc.mat2)
 }
 
 
 # --------------------------------------------------------
 # tab.paired
 # --------------------------------------------------------
+#' @export
 tab.paired <-  function(d, y1, y2, data=NULL, testnames, ...) {
   # check arguments
   if (missing(d)) stop("Disease status (d) is missing.")
@@ -218,6 +343,7 @@ tab.paired <-  function(d, y1, y2, data=NULL, testnames, ...) {
   return(results)
 }
 
+#' @exportS3Method print tab.paired
 print.tab.paired <- function(x,...) {
   cat("Two binary diagnostic tests (paired design)")
   cat("\n\n")
@@ -235,6 +361,7 @@ print.tab.paired <- function(x,...) {
 # --------------------------------------------------------
 # read.tab.paired
 # --------------------------------------------------------
+#' @export
 read.tab.paired <-  function(d.a, d.b, d.c, d.d,
                              nd.a, nd.b, nd.c, nd.d,
                              testnames, ...) {
@@ -270,6 +397,7 @@ read.tab.paired <-  function(d.a, d.b, d.c, d.d,
 # --------------------------------------------------------
 # generate.paired
 # --------------------------------------------------------
+#' @export
 generate.paired <- function(tab, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -293,6 +421,7 @@ generate.paired <- function(tab, ...) {
 # --------------------------------------------------------
 # acc.paired
 # --------------------------------------------------------
+#' @export
 acc.paired <-  function(tab, alpha, method.ci, ...) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -316,6 +445,7 @@ acc.paired <-  function(tab, alpha, method.ci, ...) {
   return(results)
 }
 
+#' @exportS3Method print acc.paired
 print.acc.paired <- function(x,...) {
   print(x[[1]]); 
   cat("\n----------------------------------------------------------\n")
@@ -326,6 +456,7 @@ print.acc.paired <- function(x,...) {
 # --------------------------------------------------------
 # represent.long
 # --------------------------------------------------------
+#' @export
 represent.long <- function(d, y1, y2) {
   df <- data.frame(d, y1, y2)
   colnames(df) <- c("d","y1","y2")
@@ -345,6 +476,7 @@ represent.long <- function(d, y1, y2) {
 # --------------------------------------------------------
 # sesp.mcnemar
 # --------------------------------------------------------
+#' @export
 sesp.mcnemar <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -381,6 +513,7 @@ sesp.mcnemar <- function(tab) {
 # --------------------------------------------------------
 # sesp.exactbinom
 # --------------------------------------------------------
+#' @export
 sesp.exactbinom <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -419,6 +552,7 @@ sesp.exactbinom <- function(tab) {
 # --------------------------------------------------------
 # pv.gs
 # --------------------------------------------------------
+#' @export
 pv.gs <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -491,6 +625,7 @@ pv.gs <- function(tab) {
 # --------------------------------------------------------
 # pv.wgs
 # --------------------------------------------------------
+#' @export
 pv.wgs <- function(tab) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -540,6 +675,7 @@ pv.wgs <- function(tab) {
 # --------------------------------------------------------
 # pv.rpv
 # --------------------------------------------------------
+#' @export
 pv.rpv <- function(tab, alpha) {
   # check arguments
   if (missing(tab)) stop("Table is missing.")
@@ -625,6 +761,7 @@ pv.rpv <- function(tab, alpha) {
 #' @references Moskowitz, C.S., and Pepe, M.S. (2006). Comparing the predictive values of diagnostic tests: sample size and analysis for paired study designs. \emph{Clin Trials}, 3(3):272-9.
 #' 
 #' @seealso \code{pv.rpv} and \code{ellipse::ellipse}.
+#' @export
 #' 
 #' @examples
 #' data(Paired1) # Hypothetical study data

@@ -1,23 +1,43 @@
+## DTComPair version 1.2.6 (2024-09-24)
+
+- The functions `acc.1test()` and `acc.paired()` now allow the user (via the 
+  argument `method.ci`)to choose from a range of differnt types of confidence 
+  intervals.
+
 ## DTComPair version 1.2.4 (2024-04-10)
 
-- `tab.paired` and `tab.1test` now allow for data where all subjects are either diseased or nondiseased
-- Added package website and hex sticker
+- The functions `tab.paired()` and `tab.1test()` now allow for data where all 
+  subjects are either diseased or nondiseased.
+- A link to a package website and a hex sticker have been added.
 
 ## DTComPair version 1.2.2 (2023-08-20)
 
-- Functions that compare sensitivity/ specificity and predictive values now return lists of vectors (instead of lists of lists).
+- Functions that compare sensitivity/ specificity and predictive values now 
+  return lists of vectors (instead of lists of lists).
 - `Test 1` is consistently used as the reference test.
-- In `pv.gs`and `pv.wgs`, it is now `diff.ppv <- ppv.2-ppv.1` (instead of `diff.ppv <- abs(ppv.1-ppv.2)`), and accordingly for negative predictive values.
-- Added a new function (`pv.prev`) to allow computation of positive and negative predictive values for different theoretical prevalences.
-- Added a new function (`sesp.gen.mcnemar`) implementing a generalized McNemar's test for a joint comparison of sensitivity and specificity.
-- Redundant table in man/dtcompair-package.rd deleted.
+- In `pv.gs()`and `pv.wgs()`, it is now `diff.ppv <- ppv.2-ppv.1` (instead of
+  `diff.ppv <- abs(ppv.1-ppv.2)`), and accordingly for negative predictive 
+  values.
+- Added a new function (`pv.prev()`) to allow computation of positive and 
+  negative predictive values for different theoretical prevalences.
+- Added a new function (`sesp.gen.mcnemar()`) implementing a generalized 
+  McNemar's test for a joint comparison of sensitivity and specificity.
+- A redundant table in `man/dtcompair-package.rd` was deleted.
 
 ## DTComPair version 1.2.0 (2023-04-20)
 
 - `pv.rpv()` now returns the full variance-covariance matrix (`Sigma`).
-- `ellipse.pv.rpv()` generates the data to plot a joint confidence region for rPPV and rNPV (depends on the `ellipse` package) (as in Moskowitz and Pepe, 2006).
-- `sesp.rel()` calculates relative sensitivity and relative specificity (with Wald CIs and p-value).
-- `tpffpf.rel()` calculates relative sensitivity (rTPF) and relative 'one minus specificity' (rFPF) (with Wald CIs and p-value), but it does not calculate their individual components (ie, TPFs and FPFs); this function is meant to be used with paired screen-positive designs, where only rTPF and rFPF are estimable form the data (see Cheng and Macaluso, 1997 or Alonzo, Pepe, Moskowitz, 2002).
+- `ellipse.pv.rpv()` generates the data to plot a joint confidence region for 
+  rPPV and rNPV (depends on the `ellipse` package) (as in Moskowitz and Pepe, 
+  2006).
+- `sesp.rel()` calculates relative sensitivity and relative specificity (with 
+  Wald CIs and p-value).
+- `tpffpf.rel()` calculates relative sensitivity (rTPF) and relative 'one minus
+  specificity' (rFPF) (with Wald CIs and p-value), but it does not calculate 
+  their individual components (ie, TPFs and FPFs); this function is meant to be 
+  used with paired screen-positive designs, where only rTPF and rFPF are 
+  estimable form the data (see Cheng and Macaluso, 1997 or Alonzo, Pepe, 
+  Moskowitz, 2002).
 - The new features were contributed by A. Discacciati - many thanks!
     
     

@@ -1,3 +1,4 @@
+#' @export
 DLR <- function(basemodel, augmentedmodel, diseasestatus,
                 dataset, clustervar=NULL, alpha=0.05) {
   
@@ -42,7 +43,7 @@ DLR <- function(basemodel, augmentedmodel, diseasestatus,
   # step 4/5: fit simultaneously two logistic regression models in a GEE model setup for disease status d and predictors Z
   # prior to fit, data has to be sorted by cluster/subject
   datdup   <- datdup[order(datdup$subjid),]
-  gee_xv   <- gee(as.formula(paste("d ~ ", paste(colnames(z),collapse="+"),"-1")), # no common intercept due to x an v specific ones
+  gee_xv   <- gee::gee(as.formula(paste("d ~ ", paste(colnames(z),collapse="+"),"-1")), # no common intercept due to x an v specific ones
                   data=datdup, corstr="independence",family=binomial, id=datdup$subjid, maxiter=100, tol=1e-5)
   # model estimates
   coefs    <- coef(gee_xv)

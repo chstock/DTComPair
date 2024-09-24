@@ -14,7 +14,7 @@ status](https://www.r-pkg.org/badges/version/DTComPair)](https://CRAN.R-project.
 <!-- badges: end -->
 
 Comparison of the accuracy of two binary diagnostic tests in a “paired”
-study design, i.e. when each test is applied to each subject in the
+study design, i.e. when each test is applied to each subject in the
 study.
 
 ## Installation
@@ -49,6 +49,9 @@ positive and negative diagnostic likelihood ratios.
 ``` r
 library(DTComPair)
 # Loading required package: PropCIs
+```
+
+``` r
 data(Paired1) # Hypothetical study data
 a1 <- tab.1test(d=d, y=y1, data=Paired1)
 print(a1)
@@ -58,8 +61,27 @@ print(a1)
 # Test pos.      397           84   481
 # Test neg.       54          177   231
 # Total          451          261   712
-a2 <- acc.1test(a1)
-print(a2)
+```
+
+``` r
+a1 |> acc.1test(method.ci = waldci) # default Wald interval
+# Diagnostic accuracy of test 'y1'
+# 
+# (Estimates, standard errors and 95%-confidence intervals)
+# 
+#                  Est.         SE  Lower CL  Upper CL
+# Sensitivity 0.8802661 0.01528718 0.8503038 0.9102284
+# Specificity 0.6781609 0.02891782 0.6214830 0.7348388
+# PPV         0.8253638 0.01731081 0.7914353 0.8592924
+# NPV         0.7662338 0.02784617 0.7116563 0.8208113
+# 
+#            Est.  SE (log)  Lower CL  Upper CL
+# PDLR  2.7351124 0.0915147 2.2860079 3.2724472
+# NDLR  0.1765568 0.1346088 0.1356142 0.2298601
+```
+
+``` r
+a1 |> acc.1test(method.ci = exactci) # Wilson score interval
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
@@ -98,8 +120,10 @@ print(b1)
 # Test2 pos.         31         22    53
 # Test2 neg.         53        155   208
 # Total              84        177   261
-b2 <- acc.paired(b1)
-print(b2)
+```
+
+``` r
+b1 |> acc.paired(method.ci = scoreci)
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
@@ -182,17 +206,17 @@ pv.rpv(b1)
 citation("DTComPair")
 # To cite DTComPair in publications use:
 # 
-#   Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of
+#   Stock C, Hielscher T, Discacciati A (2024). DTComPair: comparison of
 #   binary diagnostic tests in a paired study design. R package, version
-#   1.2.2. URL: https://CRAN.R-project.org/package=DTComPair.
+#   1.2.4. URL: https://CRAN.R-project.org/package=DTComPair.
 # 
 # A BibTeX entry for LaTeX users is
 # 
 #   @Misc{,
 #     title = {{DTComPair}: comparison of binary diagnostic tests in a paired study design},
 #     author = {Christian Stock and Thomas Hielscher and Andrea Discacciati},
-#     year = {2023},
-#     note = {{R} package, version 1.2.2. {URL}: {https://CRAN.R-project.org/package=DTComPair}.},
+#     year = {2024},
+#     note = {{R} package, version 1.2.4. {URL}: {https://CRAN.R-project.org/package=DTComPair}.},
 #     encoding = {UTF-8},
 #   }
 ```

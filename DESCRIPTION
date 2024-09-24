@@ -1,7 +1,7 @@
 Package: DTComPair
 Type: Package
 Title: Comparison of Binary Diagnostic Tests in a Paired Study Design 
-Version: 1.2.4
+Version: 1.2.6
 Authors@R: c(
     person("Christian", "Stock", email = "christian.stock@boehringer-ingelheim.com", role = c("aut","cre"), comment = c(ORCID = "0000-0002-3493-3234")),
     person("Thomas", "Hielscher", role = "aut"),
@@ -14,8 +14,10 @@ BugReports: https://github.com/chstock/DTComPair/issues
 Encoding: UTF-8
 LazyData: true  
 Imports: 
-  gee,
-  ellipse
+    gee,
+    ellipse,
+    stats,
+    assertthat
 Depends: 
     R (>= 3.5.0),
     PropCIs

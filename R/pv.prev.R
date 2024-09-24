@@ -19,6 +19,7 @@
 #' The alpha-level of (1-alpha)-confidence intervals is inherited from `acc.1test`.
 #'
 #' @seealso [acc.1test()]
+#' @export
 #'
 #' @examples
 #' data(Paired1) # Hypothetical study data 
