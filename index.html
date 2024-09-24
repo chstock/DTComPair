@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Comparison of Binary Diagnostic Tests in a Paired Study Design • DTComPair</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
@@ -23,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">DTComPair</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,8 +86,9 @@
 <p><strong>Determine the accuracy of one diagnostic test</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/chstock/DTComPair" class="external-link">DTComPair</a></span><span class="op">)</span></span>
-<span><span class="co"># Loading required package: PropCIs</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Paired1</span><span class="op">)</span> <span class="co"># Hypothetical study data</span></span>
+<span><span class="co"># Loading required package: PropCIs</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">Paired1</span><span class="op">)</span> <span class="co"># Hypothetical study data</span></span>
 <span><span class="va">a1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tab.1test.html">tab.1test</a></span><span class="op">(</span>d<span class="op">=</span><span class="va">d</span>, y<span class="op">=</span><span class="va">y1</span>, data<span class="op">=</span><span class="va">Paired1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">a1</span><span class="op">)</span></span>
 <span><span class="co"># Binary diagnostic test 'y1'</span></span>
@@ -89,9 +96,24 @@
 <span><span class="co">#           Diseased Non-diseased Total</span></span>
 <span><span class="co"># Test pos.      397           84   481</span></span>
 <span><span class="co"># Test neg.       54          177   231</span></span>
-<span><span class="co"># Total          451          261   712</span></span>
-<span><span class="va">a2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span><span class="va">a1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">a2</span><span class="op">)</span></span>
+<span><span class="co"># Total          451          261   712</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="va">waldci</span><span class="op">)</span> <span class="co"># default Wald interval</span></span>
+<span><span class="co"># Diagnostic accuracy of test 'y1'</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co"># (Estimates, standard errors and 95%-confidence intervals)</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co">#                  Est.         SE  Lower CL  Upper CL</span></span>
+<span><span class="co"># Sensitivity 0.8802661 0.01528718 0.8503038 0.9102284</span></span>
+<span><span class="co"># Specificity 0.6781609 0.02891782 0.6214830 0.7348388</span></span>
+<span><span class="co"># PPV         0.8253638 0.01731081 0.7914353 0.8592924</span></span>
+<span><span class="co"># NPV         0.7662338 0.02784617 0.7116563 0.8208113</span></span>
+<span><span class="co"># </span></span>
+<span><span class="co">#            Est.  SE (log)  Lower CL  Upper CL</span></span>
+<span><span class="co"># PDLR  2.7351124 0.0915147 2.2860079 3.2724472</span></span>
+<span><span class="co"># NDLR  0.1765568 0.1346088 0.1356142 0.2298601</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="va">exactci</span><span class="op">)</span> <span class="co"># Wilson score interval</span></span>
 <span><span class="co"># Diagnostic accuracy of test 'y1'</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># (Estimates, standard errors and 95%-confidence intervals)</span></span>
@@ -107,7 +129,7 @@
 <span><span class="co"># NDLR  0.1765568 0.1346088 0.1356142 0.2298601</span></span></code></pre></div>
 <p><strong>Compare the accuracy of two diagnostic tests</strong></p>
 <p><strong><em>Compute accuracy measures</em></strong></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tab.paired.html">tab.paired</a></span><span class="op">(</span>d<span class="op">=</span><span class="va">d</span>, y1<span class="op">=</span><span class="va">y1</span>, y2<span class="op">=</span><span class="va">y2</span>, data<span class="op">=</span><span class="va">Paired1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">b1</span><span class="op">)</span> </span>
 <span><span class="co"># Two binary diagnostic tests (paired design)</span></span>
@@ -125,9 +147,9 @@
 <span><span class="co">#            Test1 pos. Test1 neg. Total</span></span>
 <span><span class="co"># Test2 pos.         31         22    53</span></span>
 <span><span class="co"># Test2 neg.         53        155   208</span></span>
-<span><span class="co"># Total              84        177   261</span></span>
-<span><span class="va">b2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/acc.paired.html">acc.paired</a></span><span class="op">(</span><span class="va">b1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">b2</span><span class="op">)</span></span>
+<span><span class="co"># Total              84        177   261</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.paired.html">acc.paired</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="va">scoreci</span><span class="op">)</span></span>
 <span><span class="co"># Diagnostic accuracy of test 'y1'</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># (Estimates, standard errors and 95%-confidence intervals)</span></span>
@@ -158,7 +180,7 @@
 <span><span class="co"># NDLR  0.3060507 0.0885996 0.2572629 0.3640906</span></span></code></pre></div>
 <p><strong><em>Compare predictive values</em></strong></p>
 <p>Test based on weighted generalized score statistic:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pv.wgs.html">pv.wgs</a></span><span class="op">(</span><span class="va">b1</span><span class="op">)</span>  </span>
 <span><span class="co"># $ppv</span></span>
 <span><span class="co">#          test1          test2           diff test.statistic        p.value </span></span>
@@ -171,7 +193,7 @@
 <span><span class="co"># $method</span></span>
 <span><span class="co"># [1] "weighted generalized score statistic (wgs)"</span></span></code></pre></div>
 <p>Estimation and test of relative predictive values:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/pv.rpv.html">pv.rpv</a></span><span class="op">(</span><span class="va">b1</span><span class="op">)</span></span>
 <span><span class="co"># $ppv</span></span>
 <span><span class="co">#          test1          test2           rppv    se.log.rppv       lcl.rppv </span></span>
@@ -200,21 +222,21 @@
 <h2 id="citing-dtcompair">Citing <code>DTComPair</code>
 <a class="anchor" aria-label="anchor" href="#citing-dtcompair"></a>
 </h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"DTComPair"</span><span class="op">)</span></span>
 <span><span class="co"># To cite DTComPair in publications use:</span></span>
 <span><span class="co"># </span></span>
-<span><span class="co">#   Stock C, Hielscher T, Discacciati A (2023). DTComPair: comparison of</span></span>
+<span><span class="co">#   Stock C, Hielscher T, Discacciati A (2024). DTComPair: comparison of</span></span>
 <span><span class="co">#   binary diagnostic tests in a paired study design. R package, version</span></span>
-<span><span class="co">#   1.2.2. URL: https://CRAN.R-project.org/package=DTComPair.</span></span>
+<span><span class="co">#   1.2.4. URL: https://CRAN.R-project.org/package=DTComPair.</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co">#   @Misc{,</span></span>
 <span><span class="co">#     title = {{DTComPair}: comparison of binary diagnostic tests in a paired study design},</span></span>
 <span><span class="co">#     author = {Christian Stock and Thomas Hielscher and Andrea Discacciati},</span></span>
-<span><span class="co">#     year = {2023},</span></span>
-<span><span class="co">#     note = {{R} package, version 1.2.2. {URL}: {https://CRAN.R-project.org/package=DTComPair}.},</span></span>
+<span><span class="co">#     year = {2024},</span></span>
+<span><span class="co">#     note = {{R} package, version 1.2.4. {URL}: {https://CRAN.R-project.org/package=DTComPair}.},</span></span>
 <span><span class="co">#     encoding = {UTF-8},</span></span>
 <span><span class="co">#   }</span></span></code></pre></div>
 </div>
@@ -271,7 +293,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
