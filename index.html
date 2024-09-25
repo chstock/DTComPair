@@ -98,7 +98,7 @@
 <span><span class="co"># Test neg.       54          177   231</span></span>
 <span><span class="co"># Total          451          261   712</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="st">"waldci"</span><span class="op">)</span> <span class="co"># default Wald interval</span></span>
+<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="st">"waldci"</span><span class="op">)</span> <span class="co"># default Wald intervals</span></span>
 <span><span class="co"># Diagnostic accuracy of test 'y1'</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># (Estimates, standard errors and 95%-confidence intervals)</span></span>
@@ -113,7 +113,7 @@
 <span><span class="co"># PDLR  2.7351124 0.0915147 2.2860079 3.2724472</span></span>
 <span><span class="co"># NDLR  0.1765568 0.1346088 0.1356142 0.2298601</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="st">"exactci"</span><span class="op">)</span> <span class="co"># Wilson score interval</span></span>
+<code class="sourceCode R"><span><span class="va">a1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.1test.html">acc.1test</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="st">"exactci"</span><span class="op">)</span> <span class="co"># Clopper-Pearson intervals</span></span>
 <span><span class="co"># Diagnostic accuracy of test 'y1'</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># (Estimates, standard errors and 95%-confidence intervals)</span></span>
@@ -130,8 +130,8 @@
 <p><strong>Compare the accuracy of two diagnostic tests</strong></p>
 <p><strong><em>Compute accuracy measures</em></strong></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tab.paired.html">tab.paired</a></span><span class="op">(</span>d<span class="op">=</span><span class="va">d</span>, y1<span class="op">=</span><span class="va">y1</span>, y2<span class="op">=</span><span class="va">y2</span>, data<span class="op">=</span><span class="va">Paired1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">b1</span><span class="op">)</span> </span>
+<code class="sourceCode R"><span><span class="va">b1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tab.paired.html">tab.paired</a></span><span class="op">(</span>d <span class="op">=</span> <span class="va">d</span>, y1 <span class="op">=</span> <span class="va">y1</span>, y2 <span class="op">=</span> <span class="va">y2</span>, data <span class="op">=</span> <span class="va">Paired1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">b1</span><span class="op">)</span></span>
 <span><span class="co"># Two binary diagnostic tests (paired design)</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># Test1: 'y1'</span></span>
@@ -149,7 +149,7 @@
 <span><span class="co"># Test2 neg.         53        155   208</span></span>
 <span><span class="co"># Total              84        177   261</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.paired.html">acc.paired</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="st">"scoreci"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">b1</span> <span class="op">|&gt;</span> <span class="fu"><a href="reference/acc.paired.html">acc.paired</a></span><span class="op">(</span>method.ci <span class="op">=</span> <span class="st">"scoreci"</span><span class="op">)</span> <span class="co"># Wilson intervals</span></span>
 <span><span class="co"># Diagnostic accuracy of test 'y1'</span></span>
 <span><span class="co"># </span></span>
 <span><span class="co"># (Estimates, standard errors and 95%-confidence intervals)</span></span>
