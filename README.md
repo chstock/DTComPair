@@ -64,7 +64,7 @@ print(a1)
 ```
 
 ``` r
-a1 |> acc.1test(method.ci = "waldci") # default Wald interval
+a1 |> acc.1test(method.ci = "waldci") # default Wald intervals
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
@@ -81,7 +81,7 @@ a1 |> acc.1test(method.ci = "waldci") # default Wald interval
 ```
 
 ``` r
-a1 |> acc.1test(method.ci = "exactci") # Wilson score interval
+a1 |> acc.1test(method.ci = "exactci") # Clopper-Pearson intervals
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
@@ -102,8 +102,8 @@ a1 |> acc.1test(method.ci = "exactci") # Wilson score interval
 ***Compute accuracy measures***
 
 ``` r
-b1 <- tab.paired(d=d, y1=y1, y2=y2, data=Paired1)
-print(b1) 
+b1 <- tab.paired(d = d, y1 = y1, y2 = y2, data = Paired1)
+print(b1)
 # Two binary diagnostic tests (paired design)
 # 
 # Test1: 'y1'
@@ -123,7 +123,7 @@ print(b1)
 ```
 
 ``` r
-b1 |> acc.paired(method.ci = "scoreci")
+b1 |> acc.paired(method.ci = "scoreci") # Wilson intervals
 # Diagnostic accuracy of test 'y1'
 # 
 # (Estimates, standard errors and 95%-confidence intervals)
