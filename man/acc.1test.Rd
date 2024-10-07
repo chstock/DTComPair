@@ -96,6 +96,6 @@ data(Paired1) # Hypothetical study data
 a1 <- tab.1test(d=d, y=y1, data=Paired1)
 a2 <- acc.1test(a1)
 print(a2)
-a3 <- acc.1test(a1, method="exactci", conf.level=0.99)
+a3 <- acc.1test(a1, method="exactci", alpha=0.01)
 print(a3)
 }
